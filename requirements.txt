@@ -1,0 +1,4 @@
+telethon>=1.45
+requests
+pillow
+rembg[cpu]

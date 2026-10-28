@@ -1,0 +1,13 @@
+# Secrets — never commit
+config.json
+*.session
+*.session-journal
+
+# Local state and generated files
+.venv/
+__pycache__/
+work/
+players/
+templates/_render_*.html
+last_post.html
+scan_emoji.py

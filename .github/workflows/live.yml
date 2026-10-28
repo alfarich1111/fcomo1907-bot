@@ -1,0 +1,40 @@
+name: Live commentary
+
+# Every hour: if Como plays within 3 hours, follow the match until the final whistle
+# (lineup, goals, subs, cards, half/full time) and post the result poster.
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: live
+  cancel-in-progress: false
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find match
+        id: find
+        run: python find_match.py >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        if: steps.find.outputs.event != ''
+        run: pip install -r requirements.txt
+
+      - name: Live commentary
+        if: steps.find.outputs.event != ''
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+          TG_SESSION: ${{ secrets.TG_SESSION }}
+          FCOMO_META_URL: https://raw.githubusercontent.com/${{ github.repository }}/match-data/data/matches/{id}.json
+        run: python live.py "${{ steps.find.outputs.event }}" --league "${{ steps.find.outputs.league }}"

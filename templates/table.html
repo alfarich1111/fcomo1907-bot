@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .title { position: absolute; top: 300px; left: 96px; font-size: 104px; font-weight: 900; letter-spacing: -4px;
+    text-transform: uppercase; line-height: 1; }
+  .title span { color: #a8d0ff; }
+  .tbl { position: absolute; top: 450px; left: 96px; right: 96px; background: #13235a; border-radius: 28px;
+    padding: 22px 36px; box-shadow: 0 24px 60px rgba(8,20,70,.35); }
+  .row { display: grid; grid-template-columns: 70px 64px 1fr 90px 120px 110px; align-items: center; height: 60px;
+    font-size: 32px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .row:last-child { border-bottom: none; }
+  .row.head { height: 52px; font-size: 22px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: #cfe3ff; }
+  .row .pos { font-weight: 900; color: #cfe3ff; }
+  .row img { width: 42px; height: 42px; object-fit: contain; }
+  .row .num { text-align: right; }
+  .row .pts { text-align: right; font-weight: 900; }
+  .row.como { background: #2f7cf0; margin: 0 -36px; padding: 0 36px; border-radius: 14px; border-bottom: none; }
+  .row.como .pos { color: #fff; }
+  .row.cl .pos { color: #6fe08a; } .row.el .pos { color: #ffd166; } .row.rel .pos { color: #ff7a7f; }
+  .legend { position: absolute; top: 1880px; left: 96px; right: 96px; display: flex; gap: 48px; font-size: 26px;
+    font-weight: 700; color: #cfe3ff; }
+  .legend i { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 12px; vertical-align: -1px; }
+</style></head>
+<body>
+  <div class="top"><div class="day">$weekday</div>
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>@fcomo1907</div>
+    <div class="date">$date</div></div>
+  <div class="rule" style="top:216px"></div>
+  <div class="title">Таблица <span>$subtitle</span></div>
+  <div class="tbl">
+    <div class="row head"><div>#</div><div></div><div>Клуб</div><div class="num">И</div><div class="num">РМ</div><div class="num">О</div></div>
+    $rows
+  </div>
+  <div class="legend"><span><i style="background:#6fe08a"></i>Лига чемпионов</span><span><i style="background:#ffd166"></i>Лига Европы</span><span><i style="background:#ff7a7f"></i>Вылет</span></div>
+</body></html>
