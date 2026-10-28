@@ -11,3 +11,4 @@ players/
 templates/_render_*.html
 last_post.html
 scan_emoji.py
+pyaes/
