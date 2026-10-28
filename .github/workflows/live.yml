@@ -65,5 +65,6 @@ jobs:
           TG_API_ID: ${{ secrets.TG_API_ID }}
           TG_API_HASH: ${{ secrets.TG_API_HASH }}
           TG_SESSION: ${{ secrets.TG_SESSION }}
-          FCOMO_META_URL: https://raw.githubusercontent.com/${{ github.repository }}/match-data/data/matches/{id}.json
+          # Written by the Claude cloud match-day routine (player photo URL, round) on branch claude/match-data.
+          FCOMO_META_URL: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/claude/match-data/data/matches/{id}.json
         run: python live.py "${{ steps.find.outputs.event }}" --league "${{ steps.find.outputs.league }}"
