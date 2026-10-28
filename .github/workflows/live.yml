@@ -11,6 +11,9 @@ on:
         description: "Only check the Telegram connection (reads the last 3 posts, posts nothing)"
         type: boolean
         default: false
+      dry_event:
+        description: "Replay a finished match without posting (ESPN event id); the poster is kept as an artifact"
+        required: false
 
 concurrency:
   group: live
@@ -35,9 +38,21 @@ jobs:
           TG_SESSION: ${{ secrets.TG_SESSION }}
         run: pip install telethon && python tg.py recent 3
 
+      - name: Dry replay
+        if: inputs.dry_event != ''
+        run: |
+          pip install -r requirements.txt
+          python live.py "${{ inputs.dry_event }}" --dry
+
+      - uses: actions/upload-artifact@v4
+        if: inputs.dry_event != ''
+        with:
+          name: dry-poster
+          path: work/dry/*.png
+
       - name: Find match
         id: find
-        if: ${{ !inputs.check }}
+        if: ${{ !inputs.check && inputs.dry_event == '' }}
         run: python find_match.py >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
