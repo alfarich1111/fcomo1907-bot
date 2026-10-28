@@ -389,6 +389,11 @@ async def run(event_id, league, dry):
         await tg.send(text, photo)
 
     m.refresh()
+    if not dry:
+        # The cloud match-day routine can ship extra Russian names / team forms with the match meta.
+        meta = remote_meta(m.id)
+        NAMES.update(meta.get("names") or {})
+        TEAMS.update(meta.get("teams") or {})
     fresh = not m.state["posted"] and not m.state["lineup"]
     if not dry and fresh and m.status.get("state") == "post":
         # A late duplicate run (e.g. a queued cloud job) must not repost the whole match.
