@@ -1,0 +1,44 @@
+name: Outbox
+
+# Posts that the Claude cloud routines queue on branch claude/outbox (outbox/*.json)
+# are published to @FComo1907 from the owner's account as soon as they are pushed.
+on:
+  push:
+    branches: [claude/outbox]
+    paths: ["outbox/**"]
+
+concurrency:
+  group: outbox
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The routines force-push one fresh commit on top of main per post, so the posts to
+      # publish are exactly the outbox files that commit adds.
+      - name: New posts in this push
+        id: new
+        run: |
+          files=$(git show --pretty="" --name-only --diff-filter=A HEAD -- 'outbox/*.json')
+          echo "files=$(echo $files)" >> "$GITHUB_OUTPUT"
+          echo "new: $files"
+
+      - name: Publish
+        if: steps.new.outputs.files != ''
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+          TG_SESSION: ${{ secrets.TG_SESSION }}
+        run: |
+          pip install -q telethon
+          python outbox.py ${{ steps.new.outputs.files }}
