@@ -121,7 +121,7 @@ def event_msgs(m, events):
             if we_scored:
                 body = f"{em('goal')}<b> 🇬 🇴 🇴 🇴 🇱</b>\n\n{score_line(m, sc)}\n{em('scorer')} {who} {mn}"
                 if assist:
-                    body += f"\n🅰️ Assist: {assist}"
+                    body += f"\n{em('assist')} Assist: {assist}"
             else:
                 opp = team(m.opp["team"])["name"]
                 body = f"{mn} | \"{opp}\" gol urdi. {who}\n\n{score_line(m, sc)}"
@@ -129,7 +129,7 @@ def event_msgs(m, events):
         elif typ == "substitution" and ours and len(people) >= 2:
             subs.setdefault(mn, []).append((name(people[0]), name(people[1])))
         elif typ == "yellow-card" and ours and people:
-            msgs.append(f"{mn} | 🟨 {name(people[0])} sariq kartochka oldi")
+            msgs.append(f"{mn} | {em('yellow')} {name(people[0])} sariq kartochka oldi")
         elif typ in ("red-card", "yellow-red-card") and people:
             whose = "Jamoamiz" if ours else f"\"{team(m.opp['team'])['name']}\""
             msgs.append(f"{em('red')}<b> {mn} | {whose} futbolchisi {name(people[0])} maydondan chetlatildi!</b>\n\n"
@@ -272,7 +272,7 @@ def result_post(m, dry, wait=0):
     caption = f"{em('final')}<b> Uchrashuv yakunlandi!</b>\n\n{score_line(m)}" + (f"\n{goals}" if goals else "")
     shoot = [m.home.get("shootoutScore"), m.away.get("shootoutScore")]
     if all(s is not None for s in shoot):
-        caption += f"\n🧤 <b>Penaltilar - {int(float(shoot[0]))}:{int(float(shoot[1]))}</b>"
+        caption += f"\n{em('shootout')} <b>Penaltilar - {int(float(shoot[0]))}:{int(float(shoot[1]))}</b>"
     caption += f"\n\n{SIGN}"
     return caption, png
 

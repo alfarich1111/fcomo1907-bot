@@ -16,6 +16,9 @@ Mistakes already made, never repeat them:
 - Daily Mail logo next to "ESPN" (use the ESPN logo).
 - 🏆 on a sentence about data, with no trophy in it.
 - ⏰ on "two years later" (⏰ is for kickoff and clock times only).
+- Daily Mail logo on a Chelsea press conference source line (use the Chelsea crest).
+- 💙 on an injury and 📊 on a recovery date (use 🚑 for injuries; 📊 is for statistics only).
+- A generic 🚨 before a person's name when that person has a portrait: put the portrait right before the name too.
 
 ## People (portrait goes directly before the name)
 | Person | ID | Fallback |
@@ -81,6 +84,8 @@ Geovany Quenda, Marco Palestra and everyone else.
 | Transfermarkt | 5222259638673646156 | 📰 |
 | MARCA (Matteo Moretto) | 5222450691703873964 | 📰 |
 | Football London (Bobby Vincent) | 5222367141705066046 | 📰 |
+| Chelsea FC, chelseafc.com, Xabi Alonso's press conference | 5235992745062998625 | 💙 |
+| ESPN | 5247126270956840454 | ⚽️ |
 | Any other outlet (Standard Sport, Globo and so on) | 5235635859050504940 | 📰 |
 
 ## Statistics sources

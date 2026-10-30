@@ -1,11 +1,77 @@
 {
   "_comment": "ESPN team id -> name as the CHELSEA UZ channel writes it (in quotes in posts); emoji = premium logo used in score lines.",
-  "363": {"name": "Chelsea", "emoji": "5456404608358326466", "color": "#1d4fd8"},
-  "364": {"name": "Liverpool", "emoji": "5456599793147090298", "color": "#c8102e"},
-  "360": {"name": "Man Utd", "emoji": "5456583098609215065", "color": "#da291c"},
-  "359": {"name": "Arsenal", "color": "#ef0107"},
-  "382": {"name": "Man City", "color": "#6cabdd"},
-  "367": {"name": "Tottenham", "color": "#132257"},
-  "361": {"name": "Newcastle", "color": "#241f20"},
-  "362": {"name": "Aston Villa", "color": "#670e36"}
+  "363": {
+    "name": "Chelsea",
+    "emoji": "5456404608358326466",
+    "color": "#1d4fd8"
+  },
+  "364": {
+    "name": "Liverpool",
+    "emoji": "5456599793147090298",
+    "color": "#c8102e"
+  },
+  "360": {
+    "name": "Man Utd",
+    "emoji": "5456583098609215065",
+    "color": "#da291c"
+  },
+  "359": {
+    "name": "Arsenal",
+    "color": "#ef0107",
+    "emoji": "5456124026734812141"
+  },
+  "382": {
+    "name": "Man City",
+    "color": "#6cabdd"
+  },
+  "367": {
+    "name": "Tottenham",
+    "color": "#132257",
+    "emoji": "5456453953237588508"
+  },
+  "361": {
+    "name": "Newcastle",
+    "color": "#241f20"
+  },
+  "362": {
+    "name": "Aston Villa",
+    "color": "#670e36",
+    "emoji": "5454083281614057419"
+  },
+  "368": {
+    "name": "Everton",
+    "emoji": "5456327737033659053"
+  },
+  "349": {
+    "name": "Bournemouth",
+    "emoji": "5456292170409485304"
+  },
+  "370": {
+    "name": "Fulham",
+    "emoji": "5456181282943836065"
+  },
+  "331": {
+    "name": "Brighton",
+    "emoji": "5456292144639681185"
+  },
+  "306": {
+    "name": "Hull City",
+    "emoji": "5456178714553392551"
+  },
+  "337": {
+    "name": "Brentford",
+    "emoji": "5454019338140952651"
+  },
+  "366": {
+    "name": "Sunderland",
+    "emoji": "5456485989398651552"
+  },
+  "357": {
+    "name": "Leeds",
+    "emoji": "5456313864289297149"
+  },
+  "393": {
+    "name": "Nottingham Forest",
+    "emoji": "5456568590209686404"
+  }
 }
