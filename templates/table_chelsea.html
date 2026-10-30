@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="chelsea.css">
+<style>
+  .title { position: absolute; top: 230px; left: 80px; font-size: 150px; }
+  .title span { display: block; font-size: 60px; color: #e5b43b; letter-spacing: 8px; margin-top: 4px; }
+  .tbl { left: 80px; right: 80px; top: 480px; padding: 18px 36px; }
+  .row { display: grid; grid-template-columns: 70px 64px 1fr 90px 120px 120px; align-items: center; height: 63px;
+    font-size: 31px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .row:last-child { border-bottom: none; }
+  .row.head { height: 52px; font-size: 21px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: #e5b43b; }
+  .row .pos { font-family: 'Bebas Neue', sans-serif; font-size: 40px; }
+  .row img { width: 46px; height: 46px; object-fit: contain; background: #fff; border-radius: 50%; padding: 5px; }
+  .row .num { text-align: right; } .row .pts { text-align: right; font-family: 'Bebas Neue', sans-serif; font-size: 44px; }
+  .row.como { background: linear-gradient(90deg, #e5b43b, #c9952a); color: #021c4f; margin: 0 -36px; padding: 0 36px;
+    border-radius: 12px; border-bottom: none; }
+  .row.cl .pos { color: #5fd48a; } .row.el .pos { color: #ffd166; } .row.rel .pos { color: #ff7a7f; }
+  .row.como .pos { color: #021c4f; }
+  .legend { position: absolute; top: 1905px; left: 80px; right: 80px; display: flex; gap: 46px; font-size: 25px; font-weight: 700; opacity: .9; }
+  .legend i { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 12px; vertical-align: -1px; }
+</style></head>
+<body>
+  <img class="crest-wm" src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png">
+  <div class="topbar">
+    <div class="brand"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png">CHELSEA UZ</div>
+    <div class="when">$date<small>$weekday</small></div>
+  </div>
+  <div class="goldline" style="top:196px"></div>
+  <div class="title display">$l_title<span>$subtitle</span></div>
+  <div class="panel tbl">
+    <div class="row head"><div>#</div><div></div><div>$l_club</div><div class="num">$l_p</div><div class="num">$l_gd</div><div class="num">$l_pts</div></div>
+    $rows
+  </div>
+  <div class="legend"><span><i style="background:#5fd48a"></i>$l_cl</span><span><i style="background:#ffd166"></i>$l_el</span><span><i style="background:#ff7a7f"></i>$l_rel</span></div>
+</body></html>

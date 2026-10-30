@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="chelsea.css">
+<style>
+  .ft { position: absolute; top: 236px; left: 0; right: 0; text-align: center; }
+  .ft .tag { display: inline-block; background: #e5b43b; color: #021c4f; font-weight: 900; font-size: 30px;
+    letter-spacing: 10px; padding: 14px 40px; border-radius: 10px; text-transform: uppercase; }
+  .ft .comp { margin-top: 22px; font-size: 26px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; opacity: .85; }
+  .board { position: absolute; top: 420px; left: 80px; right: 80px; display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; }
+  .side { text-align: center; }
+  .side .logo { width: 210px; height: 210px; margin: 0 auto; background: #fff; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 0 0 8px rgba(229,180,59,.8); }
+  .side .logo img { width: 150px; height: 150px; object-fit: contain; }
+  .side .nm { margin-top: 26px; font-family: 'Bebas Neue', sans-serif; font-size: 70px; letter-spacing: 2px; }
+  .side.dim { opacity: .55; }
+  .score { font-family: 'Bebas Neue', sans-serif; font-size: 330px; line-height: .8; padding: 0 30px; letter-spacing: 6px; }
+  .score i { font-style: normal; color: #e5b43b; }
+  .head { position: absolute; top: 880px; left: 80px; width: 820px; }
+  .head .k2 { font-size: 28px; font-weight: 800; letter-spacing: 9px; color: #e5b43b; text-transform: uppercase; }
+  .head .h1 { font-size: $hl_size; margin-top: 10px; }
+  .head .h2 { font-size: $hl2_size; color: #9cc3ff; margin-top: 6px; }
+  .cut.r { right: -20px; top: 880px; width: 800px; height: 880px; }
+  .goals { left: 80px; width: 760px; top: 1250px; padding: 34px 40px; }
+  .goal { display: flex; align-items: center; height: 70px; font-weight: 700; font-size: var(--who, 40px); }
+  .goal .m { width: 150px; flex: none; font-family: 'Bebas Neue', sans-serif; font-size: 54px; color: #e5b43b; }
+  .goal .w { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .goal.opp .w { opacity: .55; } .goal.opp .m { color: #9fb0cc; }
+  .bottom { position: absolute; left: 80px; right: 80px; top: 1790px; display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 30px; }
+</style></head>
+<body>
+  <img class="crest-wm" src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png">
+  <div class="topbar">
+    <div class="brand"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png">CHELSEA UZ</div>
+    <div class="when">$date<small>$weekday</small></div>
+  </div>
+  <div class="goldline" style="top:196px"></div>
+  <div class="ft"><div class="tag">Uchrashuv yakunlandi</div><div class="comp">$kicker</div></div>
+  <div class="board">
+    <div class="side $home_dim"><div class="logo"><img src="$home_logo"></div><div class="nm" style="font-size:$home_fs">$home</div></div>
+    <div class="score">$score_h<i>:</i>$score_a</div>
+    <div class="side $away_dim"><div class="logo"><img src="$away_logo"></div><div class="nm" style="font-size:$away_fs">$away</div></div>
+  </div>
+  $right_img
+  <div class="head"><div class="k2">$k2</div><div class="h1 display">$hl1</div><div class="h2 display">$hl2</div></div>
+  <div class="panel goals" style="--who:$who_fs">$goals</div>
+  <div class="goldline" style="top:1740px"></div>
+  <div class="bottom">
+    <div class="stat"><div class="lbl">$l_table</div><div class="val">$table</div></div>
+    <div class="stat"><div class="lbl">$l_series</div><div class="val">$series</div></div>
+    <div class="stat"><div class="lbl">$l_form</div><div class="chips">$form</div></div>
+  </div>
+</body></html>

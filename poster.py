@@ -114,6 +114,16 @@ def build(kind, spec):
     s.update({k: esc(v) for k, v in spec.items() if isinstance(v, (str, int, float))})
     s["form"] = form_html(spec.get("form"), lab["form"])
     s["home_fs"], s["away_fs"] = name_size(spec.get("home")), name_size(spec.get("away"))
+    theme = spec.get("theme", "")
+    if theme:
+        # Themed posters (e.g. CHELSEA UZ) show both crests on the matchday poster and split the score.
+        s["home_fs"] = name_size(spec.get("home"), base=96)
+        s["away_fs"] = name_size(spec.get("away"), base=96)
+        for side in ("home", "away"):
+            if spec.get(f"{side}_logo"):
+                s[f"{side}_logo"] = uri(spec[f"{side}_logo"])
+        h, _, a = str(spec.get("score", "")).partition(":")
+        s["score_h"], s["score_a"] = esc(h), esc(a)
     if kind == "matchday":
         s.setdefault("home_color", "#d23a3a")
         s.setdefault("away_color", "#6fb3ff")
@@ -131,12 +141,24 @@ def build(kind, spec):
         s["hl2_size"] = headline_size(spec.get("hl2", ""), width=800, base=104, min_size=60)
         longest = max((len(g.get("who", "")) for g in spec.get("goals", [])), default=0)
         s["who_fs"] = "42px" if longest <= 15 else f"{max(28, int(42 * 15 / longest))}px"
-        s["goals"] = "".join(
-            f'<div class="goal{"" if g.get("como") else " opp"}"><span class="dot" style="background:'
-            f'{"#6fb3ff" if g.get("como") else "#e0353b"}"></span><span class="min">{esc(g["min"])}</span>'
-            f'<span class="who">{esc(g["who"])}</span></div>' for g in spec.get("goals", [])
-        ) or '<div class="goal"><span class="who">—</span></div>'
-    return Template((TPL / f"{kind}.html").read_text(encoding="utf-8")).safe_substitute(s)
+        if theme:
+            s["goals"] = "".join(
+                f'<div class="goal{"" if g.get("como") else " opp"}"><span class="m">{esc(g["min"])}</span>'
+                f'<span class="w">⚽ {esc(g["who"])}</span></div>' for g in spec.get("goals", [])
+            ) or '<div class="goal"><span class="w">Gollar yo\'q</span></div>'
+        else:
+            s["goals"] = "".join(
+                f'<div class="goal{"" if g.get("como") else " opp"}"><span class="dot" style="background:'
+                f'{"#6fb3ff" if g.get("como") else "#e0353b"}"></span><span class="min">{esc(g["min"])}</span>'
+                f'<span class="who">{esc(g["who"])}</span></div>' for g in spec.get("goals", [])
+            ) or '<div class="goal"><span class="who">—</span></div>'
+    return Template(template(kind, theme).read_text(encoding="utf-8")).safe_substitute(s)
+
+
+def template(kind, theme=""):
+    """templates/<kind>_<theme>.html when the channel has its own design, else the default one."""
+    themed = TPL / f"{kind}_{theme}.html"
+    return themed if theme and themed.exists() else TPL / f"{kind}.html"
 
 
 def table_html(subtitle, prof=None):
@@ -164,7 +186,7 @@ def table_html(subtitle, prof=None):
                     f'<div class="pts">{int(s.get("points") or 0)}</div></div>')
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=prof.get("tz_hours", 3))))
     words = {k: esc(v) for k, v in lab.items() if isinstance(v, str)}
-    return Template((TPL / "table.html").read_text(encoding="utf-8")).safe_substitute(
+    return Template(template("table", prof.get("theme", "")).read_text(encoding="utf-8")).safe_substitute(
         words, weekday=lab["weekdays"][now.weekday()], date=now.strftime("%d.%m.%Y"), subtitle=esc(subtitle),
         rows="".join(rows))
 

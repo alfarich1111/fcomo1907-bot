@@ -198,9 +198,10 @@ def result_post(m, dry):
     base = meta.get("kicker") or " · ".join(p for p in [LEAGUE_UZ.get(m.league, ""), f"{rnd}-tur" if rnd else ""] if p)
     form = live.recent_form(m.id)
     spec = {
-        "lang": "uz", "tag": "@cfc_uz",
+        "lang": "uz", "tag": "@cfc_uz", "theme": PROFILE.get("theme", ""),
         "weekday": poster.LABELS["uz"]["weekdays"][local.weekday()], "date": local.strftime("%d.%m.%Y"),
-        "kicker": f"Uchrashuv yakunlandi · {base}" if base else "Uchrashuv yakunlandi",
+        # The themed poster has its own "Uchrashuv yakunlandi" banner, so the kicker is just the competition.
+        "kicker": base if PROFILE.get("theme") else (f"Uchrashuv yakunlandi · {base}" if base else "Uchrashuv yakunlandi"),
         "home": team(m.home["team"])["name"], "away": team(m.away["team"])["name"],
         "home_logo": f"https://a.espncdn.com/i/teamlogos/soccer/500/{m.home['team']['id']}.png",
         "away_logo": f"https://a.espncdn.com/i/teamlogos/soccer/500/{m.away['team']['id']}.png",
