@@ -1,42 +1,40 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><link rel="stylesheet" href="chelsea.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=block">
 <style>
-  /* Full-bleed photo with the fixture written on top of it, like the result poster ("O'yin kuni" / "Keyingi o'yin"). */
-  body { background: #021c4f; }
+  /* Same 433-style layout as the result poster, with the kickoff time ("O'yin kuni" / "Keyingi o'yin"). */
+  body { background: #020a1f; }
   .photo { position: absolute; inset: 0; width: 1600px; height: 2000px; object-fit: cover; object-position: center 25%; }
   .shade { position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 50% at 88% 14%, rgba(2,12,40,.6), transparent 70%),
-                linear-gradient(to bottom, rgba(2,12,40,.35), transparent 22%, transparent 78%, rgba(2,12,40,.6)); }
-  .res { position: absolute; top: 70px; right: 90px; width: 700px; text-align: center; color: #fff;
-    text-shadow: 0 6px 30px rgba(0,0,0,.45); }
-  .crests { display: flex; justify-content: center; align-items: center; gap: 34px; }
-  .crests .c { width: 196px; height: 196px; border-radius: 50%; background: rgba(255,255,255,.94); display: flex;
-    align-items: center; justify-content: center; box-shadow: 0 0 0 5px rgba(229,180,59,.9), 0 16px 40px rgba(0,0,0,.45); }
-  .crests .c img { width: 136px; height: 136px; object-fit: contain; }
-  .crests .sep { width: 3px; height: 120px; background: linear-gradient(transparent, #e5b43b, transparent); }
-  .time { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 700; font-size: 250px; line-height: 1; margin-top: 40px;
-    white-space: nowrap; }
-  .tz { font-size: 26px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; color: #e5b43b; margin-top: 4px; }
-  .lbl { display: inline-block; margin-top: 30px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px;
-    line-height: 1; letter-spacing: 12px; text-transform: uppercase; padding: 16px 10px 16px 22px;
-    border-top: 3px solid #e5b43b; border-bottom: 3px solid #e5b43b; }
-  .kick { margin-top: 22px; font-size: 26px; font-weight: 800; letter-spacing: 7px; text-transform: uppercase; opacity: .9; }
-  .brand { position: absolute; left: 80px; bottom: 113px; }
-  .brand .tag { height: 54px; filter: drop-shadow(0 4px 14px rgba(0,0,0,.6)); }
-  .comp-logo { position: absolute; right: 80px; bottom: 70px; height: 140px; max-width: 280px; object-fit: contain;
-    filter: drop-shadow(0 8px 20px rgba(0,0,0,.5)); }
+    background: linear-gradient(to bottom, rgba(2,10,31,.28), transparent 14%, transparent 50%, rgba(2,10,31,.88) 74%, #020a1f 100%); }
+  .comp-logo { position: absolute; top: 60px; right: 70px; height: 130px; max-width: 240px; object-fit: contain;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
+  .res { position: absolute; left: 70px; right: 70px; bottom: 150px; color: #fff; text-align: center; }
+  .ft { font-size: 34px; font-weight: 800; letter-spacing: 10px; text-transform: uppercase; color: #e5b43b; }
+  .line { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin-top: 18px; }
+  .team { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .team .c { width: 170px; height: 170px; border-radius: 50%; background: #fff; display: flex; align-items: center;
+    justify-content: center; box-shadow: 0 12px 36px rgba(0,0,0,.5); }
+  .team .c img { width: 124px; height: 124px; object-fit: contain; }
+  .team .n { font-size: 40px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .time { font-family: 'Anton', Impact, sans-serif; font-size: 270px; line-height: 1.1; padding: 0 30px; white-space: nowrap;
+    letter-spacing: 4px; text-shadow: 0 10px 40px rgba(0,0,0,.5); }
+  .sub { margin-top: 16px; font-size: 30px; font-weight: 700; letter-spacing: 2px; }
+  .brand { position: absolute; left: 0; right: 0; bottom: 50px; height: auto; justify-content: center; }
+  .brand .tag { height: 50px; }
 </style></head>
 <body>
   $photo
   <div class="shade"></div>
+  $comp_logo
   <div class="res">
-    <div class="crests"><div class="c"><img src="$home_logo"></div><div class="sep"></div><div class="c"><img src="$away_logo"></div></div>
-    <div class="time">$time</div>
-    <div class="tz">$tz vaqti bilan</div>
-    <div class="lbl">$label</div>
-    <div class="kick">$kicker</div>
+    <div class="ft">$label</div>
+    <div class="line">
+      <div class="team"><div class="c"><img src="$home_logo"></div><div class="n">$home</div></div>
+      <div class="time">$time</div>
+      <div class="team"><div class="c"><img src="$away_logo"></div><div class="n">$away</div></div>
+    </div>
+    <div class="sub">$kicker · $tz vaqti bilan</div>
   </div>
   <div class="brand"><img class="tag" src="../assets/cfc_uz_at.png"></div>
-  $comp_logo
 </body></html>
