@@ -3,14 +3,29 @@
 Learned from 309 channel posts and the sticker images themselves. Write each sticker as
 `<tg-emoji emoji-id="ID">FALLBACK</tg-emoji>`, with the fallback shown here.
 
+## The owner's core stickers (these are enough, use them first)
+The owner picked these himself: "using these is enough". They are fixed, not optional, so they may repeat from post to post.
+
+| Where | Sticker | ID | Fallback |
+|---|---|---|---|
+| Next to the channel link (signature) | channel logo, then blue tick | 5264781562955736611, 5235830640112344428 | 🔵 ✔️ |
+| Source line | the source's own logo or face (see the source table) | | 📰 |
+| Transfer news, first line | siren | 5237921400127273564 | 🚨 |
+| Statistics, first line | bar chart | 5235643323703663527 | 📊 |
+| Interview or press conference, first line | red microphone | 5235569102373824378 | 🎙 |
+
+On the first line, the person's portrait follows directly when the post is about one person who has one:
+`🚨<portrait> Name ...`, `📊<portrait> Name ...`, `🎙<portrait> Name ...`.
+Other news: start with the portrait alone, or with a symbol from this file only if it clearly fits. Everything further down this file is for those rarer cases. Don't go looking for extra stickers.
+
 ## Main rules
 Measured from 115 of the owner's own posts: a post usually has about 3 stickers besides the signature. They sit on the first line and the source line. The body text normally has no stickers.
 
 1. Use few stickers, only where they help. Normal post: first line + source line, 2 or 3 in total. At most 4 besides the signature. Body paragraphs stay plain text. Do NOT start every paragraph with a sticker.
    Exception: interview posts, where every topic line has ⏺.
 2. Faces first. If a post is about a person with a portrait, put the portrait right before that person's name on the first line. Do the same for another person who is a main subject of the post, at their first mention. No portrait for a passing mention.
-3. 🚨 only for real breaking or important news, followed by the portrait if the story is about one person: `🚨<portrait> Name ...`. Otherwise start with the portrait or a fitting symbol.
-4. Variety. Check the last 5 channel posts and don't repeat the same optional sticker. Pick another one with the same meaning from "Alternatives". Never change the topic to get variety: an alternative must mean the same thing as the sentence.
+3. 🚨 is for transfer news and real breaking news only, not for ordinary stories.
+4. Variety applies only to optional stickers, never to the core stickers above. If an optional sticker was in the last 5 posts, pick another with the same meaning from "Alternatives". Never change the topic to get variety.
 5. Many stickers show a real face or logo, even when the fallback is 🇬🇧 or 📰. A sticker may only stand next to the exact person, club or outlet it shows. If one is not listed here, don't borrow another's: person gets no portrait, outlet gets the generic newspaper.
 6. Never invent an ID. Use only IDs from this file. Never guess who a portrait shows from the face.
 
@@ -184,7 +199,7 @@ No portrait known yet: everyone not listed above, for example Marc Cucurella, Ge
 ## Interviews and press conferences (owner's chosen format, channel post 4317)
 Use this for anyone's press conference or long interview, whether Xabi Alonso, a player or an opposing coach.
 
-First line: the person's portrait (see People; none if not listed, then 🎙), then the bold title ending with a colon.
+First line: the red microphone 🎙, then the person's portrait if they have one, then the bold title ending with a colon.
 Then one block per topic, with an empty line between blocks:
 - ⏺ sticker and the topic in bold, ending in "haqida:"
 - the quote on the next line, in `<blockquote>`, inside double quotes
@@ -192,7 +207,7 @@ Then one block per topic, with an empty line between blocks:
 Last line is the usual signature. Do not add 🚑, 💪 or other symbols to the topic lines: every topic uses ⏺.
 
 ```
-<tg-emoji emoji-id="5235617437935771587">🇪🇦</tg-emoji> <b>Xabi Alonso’ning &quot;Liverpool&quot;ga qarshi o‘yindan keyingi matbuot anjumani:</b>
+<tg-emoji emoji-id="5235569102373824378">🎙</tg-emoji><tg-emoji emoji-id="5235617437935771587">🇪🇦</tg-emoji> <b>Xabi Alonso’ning &quot;Liverpool&quot;ga qarshi o‘yindan keyingi matbuot anjumani:</b>
 
 <tg-emoji emoji-id="5235809508873248958">⏺</tg-emoji> <b>O‘yin va mag‘lubiyat haqida:</b>
 <blockquote>&quot;Natija biz kutganimizdek bo‘lmadi...&quot;</blockquote>
