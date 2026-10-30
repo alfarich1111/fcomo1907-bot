@@ -142,6 +142,16 @@ def build(kind, spec):
         longest = max((len(g.get("who", "")) for g in spec.get("goals", [])), default=0)
         s["who_fs"] = "42px" if longest <= 15 else f"{max(28, int(42 * 15 / longest))}px"
         if theme:
+            # Themed result: full-width team photo, one-line headline and our scorers as "Palmer 23', 67'".
+            s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}">' if spec.get("photo") else ""
+            s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=2150, base=190, min_size=100)
+            mins = {}
+            for g in spec.get("goals", []):
+                if g.get("como"):
+                    mins.setdefault(g["who"], []).append(str(g["min"]))
+            scorers = ", ".join(f"{who} {', '.join(m)}" for who, m in mins.items())
+            s["scorers"] = esc(scorers or "—")
+            s["scorers_fs"] = "40px" if len(scorers) <= 24 else ("34px" if len(scorers) <= 44 else "28px")
             s["goals"] = "".join(
                 f'<div class="goal{"" if g.get("como") else " opp"}"><span class="m">{esc(g["min"])}</span>'
                 f'<span class="w">⚽ {esc(g["who"])}</span></div>' for g in spec.get("goals", [])

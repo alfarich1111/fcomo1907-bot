@@ -185,15 +185,8 @@ def result_post(m, dry):
     win, draw = ch > ca, ch == ca
     local = m.kickoff.astimezone(TZ)
     meta = live.remote_meta(m.id) if not dry else {}
-    img = meta.get("como_img") or ""
-    if img.startswith("http"):
-        try:
-            out = live.WORK / f"chelsea_{m.id}.png"
-            poster.cutout(img, out)
-            img = str(out)
-        except Exception as e:
-            print("cutout failed:", e, flush=True)
-            img = ""
+    # Result poster: a photo of Chelsea players together (URL from the match-day task), else the stock one.
+    photo = meta.get("result_photo") or str(live.HERE / "assets" / "chelsea_team.jpg")
     rnd, rank, pts = league_round(m.league) if m.league == "eng.1" else (None, None, None)
     base = meta.get("kicker") or " · ".join(p for p in [LEAGUE_UZ.get(m.league, ""), f"{rnd}-tur" if rnd else ""] if p)
     form = live.recent_form(m.id)
@@ -207,7 +200,7 @@ def result_post(m, dry):
         "away_logo": f"https://a.espncdn.com/i/teamlogos/soccer/500/{m.away['team']['id']}.png",
         "score": f"{m.score[0]}:{m.score[1]}",
         "winner": "" if draw else ("home" if m.score[0] > m.score[1] else "away"),
-        "right_img": img or f"https://a.espncdn.com/i/teamlogos/soccer/500/{TEAM_ID}.png",
+        "photo": photo,
         "k2": ("Uyda g'alaba" if m.como_home else "Safarda g'alaba") if win else ("Hisob teng" if draw else "Afsuski"),
         "hl1": ("Kambek" if m.state.get("trailed") else "G'alaba") if win else ("Durang" if draw else "Mag'lubiyat"),
         "hl2": f"{opp} ustidan" if win else (f"{opp} bilan" if draw else f"{opp}ga qarshi"),
