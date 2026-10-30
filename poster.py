@@ -174,7 +174,10 @@ def build(kind, spec):
         s["who_fs"] = "42px" if longest <= 15 else f"{max(28, int(42 * 15 / longest))}px"
         if theme:
             # Themed result: full-width team photo, one-line headline and our scorers as "Palmer 23', 67'".
-            s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}">' if spec.get("photo") else ""
+            # photo_pos (CSS object-position) picks which part of the photo shows, e.g. "75% 20%" keeps the
+            # players on the left and leaves the top-right free for the score.
+            pos = esc(spec.get("photo_pos") or "center 25%")
+            s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">' if spec.get("photo") else ""
             s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=2150, base=190, min_size=100)
             mins = {}
             for g in spec.get("goals", []):

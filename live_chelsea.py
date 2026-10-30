@@ -200,7 +200,7 @@ def result_post(m, dry):
         "away_logo": f"https://a.espncdn.com/i/teamlogos/soccer/500/{m.away['team']['id']}.png",
         "score": f"{m.score[0]}:{m.score[1]}",
         "winner": "" if draw else ("home" if m.score[0] > m.score[1] else "away"),
-        "photo": photo,
+        "photo": photo, "photo_pos": meta.get("result_photo_pos", "") if meta.get("result_photo") else "",
         "k2": ("Uyda g'alaba" if m.como_home else "Safarda g'alaba") if win else ("Hisob teng" if draw else "Afsuski"),
         "hl1": ("Kambek" if m.state.get("trailed") else "G'alaba") if win else ("Durang" if draw else "Mag'lubiyat"),
         "hl2": f"{opp} ustidan" if win else (f"{opp} bilan" if draw else f"{opp}ga qarshi"),
