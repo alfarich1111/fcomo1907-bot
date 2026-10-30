@@ -186,7 +186,15 @@ def build(kind, spec):
         s["comp_logo"] = f'<img class="comp-logo" src="{uri(logo)}">' if logo else ""
         h, _, a = str(spec.get("score", "")).partition(":")
         s["score_h"], s["score_a"] = esc(h), esc(a)
-    if kind == "matchday":
+        # Full-bleed photo posters: photo_pos (CSS object-position) picks which part of the photo shows,
+        # e.g. "75% 20%" keeps the players on the left and leaves the top-right free for the text.
+        if spec.get("photo"):
+            pos = esc(spec.get("photo_pos") or auto_photo_pos(spec["photo"]) or "center 25%")
+            s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">'
+        else:
+            s["photo"] = ""
+        s.setdefault("label", "Keyingi o'yin" if kind == "nextmatch" else "O'yin kuni")
+    if kind in ("matchday", "nextmatch"):
         s.setdefault("home_color", "#d23a3a")
         s.setdefault("away_color", "#6fb3ff")
         s["left_img"] = img_tag("l", spec.get("left_img"))
@@ -204,11 +212,7 @@ def build(kind, spec):
         longest = max((len(g.get("who", "")) for g in spec.get("goals", [])), default=0)
         s["who_fs"] = "42px" if longest <= 15 else f"{max(28, int(42 * 15 / longest))}px"
         if theme:
-            # Themed result: full-width team photo, one-line headline and our scorers as "Palmer 23', 67'".
-            # photo_pos (CSS object-position) picks which part of the photo shows, e.g. "75% 20%" keeps the
-            # players on the left and leaves the top-right free for the score.
-            pos = esc(spec.get("photo_pos") or (auto_photo_pos(spec["photo"]) if spec.get("photo") else "") or "center 25%")
-            s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">' if spec.get("photo") else ""
+            # Themed result: one-line headline and our scorers as "Palmer 23', 67'".
             s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=2150, base=190, min_size=100)
             mins = {}
             for g in spec.get("goals", []):
@@ -232,6 +236,8 @@ def build(kind, spec):
 
 def template(kind, theme=""):
     """templates/<kind>_<theme>.html when the channel has its own design, else the default one."""
+    if kind == "nextmatch":  # the "next match" poster is the matchday design with another label
+        kind = "matchday"
     themed = TPL / f"{kind}_{theme}.html"
     return themed if theme and themed.exists() else TPL / f"{kind}.html"
 
