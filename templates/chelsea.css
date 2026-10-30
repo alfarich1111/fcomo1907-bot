@@ -12,11 +12,13 @@ body {
 .gold { color: #e5b43b; }
 .crest-wm { position: absolute; width: 1250px; height: 1250px; left: 175px; top: 430px; opacity: .07;
   object-fit: contain; filter: grayscale(1) brightness(3); }
-.topbar { position: absolute; top: 70px; left: 80px; right: 80px; height: 96px; display: flex; align-items: center;
+.topbar { position: absolute; top: 58px; left: 80px; right: 80px; height: 120px; display: flex; align-items: center;
   justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 18px; background: #fff; color: #034694; border-radius: 48px;
-  height: 96px; padding: 0 44px 0 14px; font-weight: 900; font-size: 36px; letter-spacing: 1px; }
-.brand img { width: 70px; height: 70px; }
+.brand { display: flex; align-items: center; gap: 18px; height: 120px; }
+.brand .lg { width: 120px; height: 120px; filter: drop-shadow(0 6px 16px rgba(0,0,0,.35)); }
+.brand .pill { height: 92px; filter: drop-shadow(0 6px 16px rgba(0,0,0,.3)); }
+.foot { position: absolute; right: 80px; top: 1948px; height: 30px; opacity: .85; }
+.photo-mark { position: absolute; right: 80px; top: 650px; height: 40px; opacity: .6; z-index: 1; }
 .when { text-align: right; font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; letter-spacing: 2px; }
 .when small { display: block; font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 700;
   letter-spacing: 6px; color: #e5b43b; margin-top: 8px; text-transform: uppercase; }
