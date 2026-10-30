@@ -144,7 +144,7 @@ def build(kind, spec):
         if theme:
             # Themed result: full-width team photo, one-line headline and our scorers as "Palmer 23', 67'".
             s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}">' if spec.get("photo") else ""
-            s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=2150, base=190, min_size=100)
+            s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=1730, base=190, min_size=90)
             mins = {}
             for g in spec.get("goals", []):
                 if g.get("como"):
