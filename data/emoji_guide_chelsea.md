@@ -131,3 +131,30 @@ Geovany Quenda, Marco Palestra and everyone else.
 | Red card | 5238204146414296537 | 🟥 |
 | VAR | 5237772515085952795 | 📺 |
 | Goal video link | 5237772704064515210 | 📹 |
+
+## Interviews and press conferences (owner's chosen format, channel post 4317)
+Use this for anyone's press conference or long interview, whether Xabi Alonso, a player or an opposing coach.
+
+First line: the person's portrait (see People; none if not listed, then 🎙), then the bold title ending with a colon.
+Then one block per topic, with an empty line between blocks:
+- ⏺ sticker and the topic in bold, ending in "haqida:"
+- the quote on the next line, in `<blockquote>`, inside double quotes
+
+Last line is the usual signature. Do not add 🚑, 💪 or other symbols to the topic lines: every topic uses ⏺.
+
+```
+<tg-emoji emoji-id="5235617437935771587">🇪🇦</tg-emoji> <b>Xabi Alonso’ning &quot;Liverpool&quot;ga qarshi o‘yindan keyingi matbuot anjumani:</b>
+
+<tg-emoji emoji-id="5235809508873248958">⏺</tg-emoji> <b>O‘yin va mag‘lubiyat haqida:</b>
+<blockquote>&quot;Natija biz kutganimizdek bo‘lmadi...&quot;</blockquote>
+
+<tg-emoji emoji-id="5235809508873248958">⏺</tg-emoji> <b>Lacroix’ning jarohati haqida:</b>
+<blockquote>&quot;Keyingi bir necha kun ichida tekshiruvdan o‘tkazishimiz kerak.&quot;</blockquote>
+
+<tg-emoji emoji-id="5264781562955736611">🔵</tg-emoji> <a href="https://t.me/CFC_UZ"><b>CHELSEA UZ</b></a> <tg-emoji emoji-id="5235830640112344428">✔️</tg-emoji>
+```
+
+Rules for the content:
+- Quotes must be the person's real words from a reliable source, translated naturally. Never invent or stretch a quote.
+- Cover every useful topic from the source, not only one or two.
+- Keep the caption under 4000 characters: drop the least important topics if it would be longer.
