@@ -15,8 +15,7 @@ body {
 .topbar { position: absolute; top: 18px; left: 80px; right: 80px; height: 172px; display: flex; align-items: center;
   justify-content: space-between; }
 .brand { display: flex; align-items: center; height: 172px; }
-.brand .lg { width: 172px; height: 172px; filter: drop-shadow(0 6px 16px rgba(0,0,0,.35)); }
-.brand .pill { height: 92px; filter: drop-shadow(0 6px 16px rgba(0,0,0,.3)); }
+.brand .tag { height: 58px; filter: drop-shadow(0 4px 14px rgba(0,0,0,.4)); }
 .foot { position: absolute; right: 80px; top: 1948px; height: 30px; opacity: .85; }
 .photo-mark { position: absolute; right: 80px; top: 650px; height: 40px; opacity: .6; z-index: 1; }
 .when { text-align: right; font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; letter-spacing: 2px; }

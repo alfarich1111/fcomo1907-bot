@@ -8,8 +8,8 @@
   .shade { position: absolute; inset: 0;
     background: radial-gradient(ellipse 70% 45% at 88% 12%, rgba(2,12,40,.55), transparent 70%),
                 linear-gradient(to bottom, rgba(2,12,40,.35), transparent 22%, transparent 78%, rgba(2,12,40,.55)); }
-  .brand { position: absolute; top: 60px; left: 70px; }
-  .brand .lg { width: 160px; height: 160px; border-radius: 50%; box-shadow: 0 0 0 5px rgba(229,180,59,.9), 0 14px 34px rgba(0,0,0,.5); }
+  .brand { position: absolute; top: 80px; left: 80px; }
+  .brand .tag { height: 54px; filter: drop-shadow(0 4px 14px rgba(0,0,0,.6)); }
   .res { position: absolute; top: 70px; right: 90px; width: 700px; text-align: center; color: #fff;
     text-shadow: 0 6px 30px rgba(0,0,0,.45); }
   .crests { display: flex; justify-content: center; align-items: center; gap: 34px; }
@@ -29,7 +29,7 @@
 <body>
   $photo
   <div class="shade"></div>
-  <div class="brand"><img class="lg" src="../assets/cfc_uz_logo.png"></div>
+  <div class="brand"><img class="tag" src="../assets/cfc_uz_at.png"></div>
   <div class="res">
     <div class="crests"><div class="c"><img src="$home_logo"></div><div class="sep"></div><div class="c"><img src="$away_logo"></div></div>
     <div class="score"><span>$score_h</span><i></i><span>$score_a</span></div>
