@@ -3,8 +3,9 @@ name: Live commentary Chelsea
 # Every hour: if Chelsea plays within 3 hours, follow the match until the final whistle and post
 # (in Uzbek) to CHELSEA UZ: lineup, goals, subs, cards, half/full time and the result poster.
 on:
-  schedule:
-    - cron: "37 * * * *"
+  # Paused on the owner's request (2026-10-30); re-enable by restoring:
+  # schedule:
+  #   - cron: "37 * * * *"
   workflow_dispatch:
     inputs:
       dry_event:
