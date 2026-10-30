@@ -4,13 +4,15 @@ Learned from 309 channel posts and the sticker images themselves. Write each sti
 `<tg-emoji emoji-id="ID">FALLBACK</tg-emoji>`, with the fallback shown here.
 
 ## Main rules
-1. Many stickers are not symbols: they show a real face or logo, even when the fallback is 🇬🇧 or 📰.
-   A sticker may only stand next to the exact person, club or outlet it shows.
-2. If a person, club or outlet is not listed here, do not borrow another one's sticker.
-   - Person: use no portrait (a plain national flag is fine).
-   - Outlet: use the generic newspaper.
-3. A symbol must match the meaning of its sentence. If none fits, use the ⏺ bullet.
-4. Never invent an ID. Use only IDs from this file.
+Measured from 115 of the owner's own posts: a post usually has about 3 stickers besides the signature. They sit on the first line and the source line. The body text normally has no stickers.
+
+1. Use few stickers, only where they help. Normal post: first line + source line, 2 or 3 in total. At most 4 besides the signature. Body paragraphs stay plain text. Do NOT start every paragraph with a sticker.
+   Exception: interview posts, where every topic line has ⏺.
+2. Faces first. If a post is about a person with a portrait, put the portrait right before that person's name on the first line. Do the same for another person who is a main subject of the post, at their first mention. No portrait for a passing mention.
+3. 🚨 only for real breaking or important news, followed by the portrait if the story is about one person: `🚨<portrait> Name ...`. Otherwise start with the portrait or a fitting symbol.
+4. Variety. Check the last 5 channel posts and don't repeat the same optional sticker. Pick another one with the same meaning from "Alternatives". Never change the topic to get variety: an alternative must mean the same thing as the sentence.
+5. Many stickers show a real face or logo, even when the fallback is 🇬🇧 or 📰. A sticker may only stand next to the exact person, club or outlet it shows. If one is not listed here, don't borrow another's: person gets no portrait, outlet gets the generic newspaper.
+6. Never invent an ID. Use only IDs from this file. Never guess who a portrait shows from the face.
 
 Mistakes already made, never repeat them:
 - Daily Mail logo next to "ESPN" (use the ESPN logo).
@@ -41,9 +43,30 @@ Mistakes already made, never repeat them:
 | Moises Caicedo | 5235857049866246075 | 🇪🇨 |
 | Emmanuel Emegha | 5235505506793070856 | 🇳🇱 |
 | Olutayo Subuloye | 5235813679286491845 | 🇬🇧 |
+| Levi Colwill | 5237784429325231203 | 🇬🇧 |
+| Reece James | 5235693686490177545 | ©️ |
+| Danny Welbeck | 5235504089453863542 | 🇬🇧 |
+| Jamie Gittens | 5235694081627170751 | 🇬🇧 |
+| Reggie Watson | 5235797375590640068 | 🇬🇧 |
+| Jorrel Hato | 5235456522691061289 | 🇳🇱 |
+| Marco Palestra | 5237984480311944507 | 🇮🇹 |
+| Aaron Anselmino | 5235640085298322518 | 🇦🇷 |
+| Valentin Barco | 5235590117648802558 | 🇦🇷 |
+| Kendry Paez | 5237816160543612978 | 🇪🇨 |
+| Filip Jorgensen | 5235973447774934869 | 🇩🇰 |
+| Benoit Badiashile | 5235648847031606201 | 🇫🇷 |
+| Dastan Satpaev | 5237833374772536604 | 🇰🇿 |
+| Mykhailo Mudryk | 5235994042143126680 | 🇺🇦 |
+| Shumaira Mheuka | 5235497427959586735 | 🇬🇧 |
+| Todd Boehly | 5235496010620378459 | 🇺🇸 |
+| Behdad Eghbali | 5235561745094846845 | 🇺🇸 |
+| Jose E. Feliciano | 5238157331270770231 | 🇺🇸 |
+| Eden Hazard | 5235698423839102688 | 🇧🇪 |
+| Didier Drogba | 5235637422418602504 | 🇨🇮 |
+| John Obi Mikel | 5235612103586390144 | 🇳🇬 |
+| Thiago Silva | 5237783561741838757 | 🇧🇷 |
 
-No portrait known yet: Reece James, Levi Colwill, Marc Cucurella, Jamie Gittens, Jorrel Hato, Danny Welbeck,
-Geovany Quenda, Marco Palestra and everyone else.
+No portrait known yet: everyone not listed above, for example Marc Cucurella, Geovany Quenda and Pep Chavarria.
 
 ## Clubs (logo goes before the club name)
 | Club | ID | Fallback |
@@ -131,6 +154,32 @@ Geovany Quenda, Marco Palestra and everyone else.
 | Red card | 5238204146414296537 | 🟥 |
 | VAR | 5237772515085952795 | 📺 |
 | Goal video link | 5237772704064515210 | 📹 |
+
+## Alternatives (same meaning, use for variety)
+| Meaning | IDs and fallback |
+|---|---|
+| Breaking 🚨 | 5237921400127273564, 5238135169239524184, 5235844512856711813, 5240075025578503617 |
+| Warning ⚠️ | 5237945241490729901, 5235539291005820782 |
+| Important ❗ | 5235692556913778851, 5235662161430226370 |
+| New 🆕 | 5235467290174070986 |
+| Official ✅ | 5235658549362727274, 5235857414938466982, 5235931365685371383 |
+| No, absent ❌ | 5235948609979066364, 5235673397064674012 |
+| Statistics 📊 | 5235643323703663527, 5235514010828317264, 5235526345974391489 |
+| Words, quote 🎙 | 5235569102373824378, 5237815473348846742, 5235702521237908156, 5237805908456678199, 5238059582110081510 |
+| Great form 🔥 | 5237987826091467235, 5235827878448374573 |
+| Praise, best ⭐ | 5235763230600634606, 5235738040617445107, 5235550947547065761 |
+| Applause 👏 | 5235549345524261099 |
+| Watch this, interest 👀 | 5237776960377104234 |
+| Money, fee 💰 | 5237922538293603292, 5238185454716628450, 5240173345969844816, 5237847183092391825 |
+| Contract signed 📝 | 5235500382897086084, 5237712802155634591, 5235544883053242274 |
+| Tactics 📝 | 5235970462772665659, 5235920757116148645 |
+| Deal, agreement 🤝 | 5235598621684048536 |
+| Injury 🚑 | 5235744002032049838, 5238195041083636700, 5238006990235539671, 5235623231846653260 |
+| Photo 📸 | 5237718707735668155, 5240153859703219253, 5238239687268674276 |
+| Coming soon 🔜 | 5237916551109195817 |
+| Target 🎯 | 5237954956706751469 |
+| Chelsea love 💙 | 5235611317607373926, 5235924403543384701, 5238030552426126399, 5235791805018058093 |
+| Chelsea crest 💙 | 5235992745062998625, 5235635601352470127, 5238177165429744481 |
 
 ## Interviews and press conferences (owner's chosen format, channel post 4317)
 Use this for anyone's press conference or long interview, whether Xabi Alonso, a player or an opposing coach.
