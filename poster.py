@@ -4,8 +4,10 @@ Usage (run with .venv\\Scripts\\python.exe):
   poster.py matchday spec.json out.png
   poster.py result   spec.json out.png
   poster.py cutout   <image url|path> out.png     cut a player out of a photo (transparent PNG)
-  poster.py table    "<subtitle>" out.png          Serie A standings from ESPN, e.g. subtitle "после 10 тура"
+  poster.py table    "<subtitle>" out.png [profile] league standings from ESPN, e.g. subtitle "после 10 тура";
+                                                   profile = data/profiles/<name>.json (default: Como)
 
+Every spec may set "lang" ("ru" default, "uz") for the poster's fixed wording and "tag" for the channel tag.
 matchday spec keys: weekday, date, kicker, home, away, home_color, away_color, time, tz,
   left_img, right_img (cutout PNG paths, optional), hl1, hl2, stadium, table, form (e.g. "DLWWW", oldest first)
 result spec keys: weekday, date, kicker, home, away, home_logo, away_logo, score, winner ("home"|"away"|""),
@@ -40,7 +42,29 @@ def browser():
     if found:
         return found[-1]
     sys.exit("No Chrome/Edge found. Install one (e.g. `pip install playwright && playwright install chromium`).")
-FORM_RU = {"W": "В", "D": "Н", "L": "П"}
+
+
+# Poster wording per channel language; a spec picks one with "lang" (default "ru").
+LABELS = {
+    "ru": {"l_home": "хозяева", "l_away": "гости", "l_stadium": "Стадион", "l_table": "В таблице",
+           "l_form": "Форма Комо", "l_final": "Финал", "l_goals": "Голы", "l_series": "Серия",
+           "l_title": "Таблица", "l_club": "Клуб", "l_p": "И", "l_gd": "РМ", "l_pts": "О",
+           "l_cl": "Лига чемпионов", "l_el": "Лига Европы", "l_rel": "Вылет", "tag": "@fcomo1907", "tz": "по мск",
+           "form": {"W": "В", "D": "Н", "L": "П"},
+           "weekdays": ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]},
+    "uz": {"l_home": "mezbon", "l_away": "mehmon", "l_stadium": "Stadion", "l_table": "Jadvalda",
+           "l_form": "Chelsea formasi", "l_final": "Final", "l_goals": "Gollar", "l_series": "Seriya",
+           "l_title": "Jadval", "l_club": "Klub", "l_p": "O", "l_gd": "TF", "l_pts": "Ochko",
+           "l_cl": "Chempionlar ligasi", "l_el": "Yevropa ligasi", "l_rel": "Quyi liga", "tag": "@cfc_uz",
+           "tz": "Toshkent", "form": {"W": "G", "D": "D", "L": "M"},
+           "weekdays": ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba", "Yakshanba"]},
+}
+FORM_RU = LABELS["ru"]["form"]
+
+
+def profile(name):
+    """Channel profile (team, league, language, poster tag) from data/profiles/<name>.json."""
+    return json.loads((HERE / "data" / "profiles" / f"{name}.json").read_text(encoding="utf-8"))
 
 
 def fetch(src):
@@ -64,8 +88,8 @@ def esc(s):
     return html.escape(str(s or ""))
 
 
-def form_html(form):
-    return "".join(f'<span class="{c}">{FORM_RU[c]}</span>' for c in (form or "").upper() if c in FORM_RU)
+def form_html(form, letters=FORM_RU):
+    return "".join(f'<span class="{c}">{letters[c]}</span>' for c in (form or "").upper() if c in letters)
 
 
 def headline_size(text, width=1408, base=170, min_size=90):
@@ -74,15 +98,23 @@ def headline_size(text, width=1408, base=170, min_size=90):
     return f"{max(min_size, int(base * min(1, width / est)))}px" if est else f"{base}px"
 
 
+def name_size(name, base=76):
+    """Team names on the score board: long ones (LIVERPOOL, MAN UNITED) get a smaller font."""
+    n = len(name or "")
+    return f"{base if n <= 7 else max(44, int(base * 7.5 / n))}px"
+
+
 def img_tag(cls, src):
     return f'<img class="cut {cls}" src="{uri(src)}">' if src else ""
 
 
 def build(kind, spec):
-    s = {k: esc(v) for k, v in spec.items() if isinstance(v, (str, int, float))}
-    s["form"] = form_html(spec.get("form"))
+    lab = LABELS.get(spec.get("lang", "ru"), LABELS["ru"])
+    s = {k: esc(v) for k, v in lab.items() if isinstance(v, str)}
+    s.update({k: esc(v) for k, v in spec.items() if isinstance(v, (str, int, float))})
+    s["form"] = form_html(spec.get("form"), lab["form"])
+    s["home_fs"], s["away_fs"] = name_size(spec.get("home")), name_size(spec.get("away"))
     if kind == "matchday":
-        s.setdefault("tz", "по мск")
         s.setdefault("home_color", "#d23a3a")
         s.setdefault("away_color", "#6fb3ff")
         s["left_img"] = img_tag("l", spec.get("left_img"))
@@ -96,6 +128,9 @@ def build(kind, spec):
         s["away_dim"] = "dim" if w == "home" else ""
         s["right_img"] = img_tag("r", spec.get("right_img"))
         s["hl_size"] = headline_size(spec.get("hl1", ""), width=860, base=190, min_size=110)
+        s["hl2_size"] = headline_size(spec.get("hl2", ""), width=800, base=104, min_size=60)
+        longest = max((len(g.get("who", "")) for g in spec.get("goals", [])), default=0)
+        s["who_fs"] = "42px" if longest <= 15 else f"{max(28, int(42 * 15 / longest))}px"
         s["goals"] = "".join(
             f'<div class="goal{"" if g.get("como") else " opp"}"><span class="dot" style="background:'
             f'{"#6fb3ff" if g.get("como") else "#e0353b"}"></span><span class="min">{esc(g["min"])}</span>'
@@ -104,13 +139,15 @@ def build(kind, spec):
     return Template((TPL / f"{kind}.html").read_text(encoding="utf-8")).safe_substitute(s)
 
 
-def table_html(subtitle):
+def table_html(subtitle, prof=None):
     import datetime as dt
 
-    req = urllib.request.Request("https://site.api.espn.com/apis/v2/sports/soccer/ita.1/standings",
+    prof = prof or {"league": "ita.1", "team_id": "2572", "lang": "ru", "teams_file": "teams_ru.json", "tz_hours": 3}
+    lab = LABELS[prof["lang"]]
+    req = urllib.request.Request(f"https://site.api.espn.com/apis/v2/sports/soccer/{prof['league']}/standings",
                                  headers={"User-Agent": "Mozilla/5.0"})
     st = json.loads(urllib.request.urlopen(req, timeout=30).read())
-    teams = json.loads((HERE / "data" / "teams_ru.json").read_text(encoding="utf-8"))
+    teams = json.loads((HERE / "data" / prof["teams_file"]).read_text(encoding="utf-8"))
     entries = []
     for e in st["children"][0]["standings"]["entries"]:
         s = {x["name"]: x.get("value") for x in e["stats"]}
@@ -121,20 +158,22 @@ def table_html(subtitle):
         name = teams.get(tid, {}).get("name", team["displayName"])
         zone = "cl" if rank <= 4 else "el" if rank <= 6 else "rel" if rank >= 18 else ""
         gd = int(s.get("pointDifferential") or 0)
-        rows.append(f'<div class="row {zone}{" como" if tid == "2572" else ""}"><div class="pos">{rank}</div>'
+        rows.append(f'<div class="row {zone}{" como" if tid == str(prof["team_id"]) else ""}"><div class="pos">{rank}</div>'
                     f'<img src="https://a.espncdn.com/i/teamlogos/soccer/500/{tid}.png"><div>{esc(name)}</div>'
                     f'<div class="num">{int(s.get("gamesPlayed") or 0)}</div><div class="num">{f"{gd:+d}" if gd else "0"}</div>'
                     f'<div class="pts">{int(s.get("points") or 0)}</div></div>')
-    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=3)))
-    days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=prof.get("tz_hours", 3))))
+    words = {k: esc(v) for k, v in lab.items() if isinstance(v, str)}
     return Template((TPL / "table.html").read_text(encoding="utf-8")).safe_substitute(
-        weekday=days[now.weekday()], date=now.strftime("%d.%m.%Y"), subtitle=esc(subtitle), rows="".join(rows))
+        words, weekday=lab["weekdays"][now.weekday()], date=now.strftime("%d.%m.%Y"), subtitle=esc(subtitle),
+        rows="".join(rows))
 
 
-def render(kind, spec_path, out):
+def render(kind, spec_path, out, prof_name=None):
     page = TPL / f"_render_{kind}.html"
     if kind == "table":
-        page.write_text(table_html(spec_path), encoding="utf-8")  # spec_path is the subtitle here
+        # spec_path is the subtitle here
+        page.write_text(table_html(spec_path, profile(prof_name) if prof_name else None), encoding="utf-8")
     else:
         spec = json.loads(Path(spec_path).read_text(encoding="utf-8-sig"))
         page.write_text(build(kind, spec), encoding="utf-8")
@@ -166,7 +205,7 @@ def main():
     if kind == "cutout":
         cutout(a, b)
     else:
-        render(kind, a, b)
+        render(kind, a, b, sys.argv[4] if len(sys.argv) > 4 else None)
 
 
 if __name__ == "__main__":

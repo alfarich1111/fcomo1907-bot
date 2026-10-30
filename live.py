@@ -179,12 +179,17 @@ def event_msgs(m, events):
             m.state["score"] = [0, 0]
             msgs.append(f"<b>1’ | Матч начался</b>\n\n{m.footer()}")
         elif "goal" in typ or typ == "penalty---scored":
+            prev = m.state.get("score") or [0, 0]
             sc = m.score_from_text(ev.get("text")) or m.score
             m.state["score"] = sc
             own = "own" in typ
             scorer = name_ru(people[0]) if people else ""
             assist = name_ru(people[1], full=True) if len(people) > 1 and not own else ""
-            como_scored = como != own if team_id else False
+            # Whose goal it is comes from the score change (ESPN's team on own goals is ambiguous).
+            if sc[0] != prev[0] or sc[1] != prev[1]:
+                como_scored = (sc[0] > prev[0]) == m.como_home
+            else:
+                como_scored = como != own if team_id else False
             pen = " с пенальти" if "penalty" in typ else ""
             if como_scored:
                 body = f"<b>{mn} | Гол! {scorer}!</b>" if not own else f"<b>{mn} | Автогол! Мы забиваем!</b>"

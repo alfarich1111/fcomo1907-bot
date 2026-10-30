@@ -1,0 +1,62 @@
+name: Live commentary Chelsea
+
+# Every hour: if Chelsea plays within 3 hours, follow the match until the final whistle and post
+# (in Uzbek) to CHELSEA UZ: lineup, goals, subs, cards, half/full time and the result poster.
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_event:
+        description: "Replay a finished Chelsea match without posting (ESPN event id); the poster is kept as an artifact"
+        required: false
+      league:
+        description: "League slug for dry_event (eng.1, eng.league_cup, eng.fa, uefa.champions ...)"
+        required: false
+        default: "eng.1"
+
+concurrency:
+  group: live-chelsea
+  cancel-in-progress: false
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dry replay
+        if: inputs.dry_event != ''
+        run: |
+          pip install -r requirements.txt
+          python live_chelsea.py "${{ inputs.dry_event }}" --league "${{ inputs.league }}" --dry
+
+      - uses: actions/upload-artifact@v4
+        if: inputs.dry_event != ''
+        with:
+          name: dry-poster-chelsea
+          path: work/dry/*.png
+
+      - name: Find match
+        id: find
+        if: ${{ inputs.dry_event == '' }}
+        run: python find_match.py 363 >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        if: steps.find.outputs.event != ''
+        run: pip install -r requirements.txt
+
+      - name: Live commentary
+        if: steps.find.outputs.event != ''
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+          TG_SESSION: ${{ secrets.TG_SESSION }}
+          # Written by the Claude cloud match-day routine (player photo URL, round, names) on branch claude/outbox.
+          FCOMO_META_URL: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/claude/outbox/data/matches/{id}.json
+        run: python live_chelsea.py "${{ steps.find.outputs.event }}" --league "${{ steps.find.outputs.league }}"

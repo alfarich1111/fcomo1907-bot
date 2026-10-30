@@ -2,7 +2,8 @@
 
 The Claude cloud routines can't reach Telegram directly, so they commit a post to branch
 claude/outbox as outbox/<name>.json:
-  {"caption": "<HTML caption with <tg-emoji ...>>", "photo": "outbox/<name>.png" | "https://..." | ""}
+  {"caption": "<HTML caption with <tg-emoji ...>>", "photo": "outbox/<name>.png" | "https://..." | "",
+   "channel": "CHELSI_CHELSEAUZ_CFCUZ"}   (channel is optional; default @FComo1907)
 This script posts every given JSON file in order, via tg.py (the owner's account).
 
 Usage: outbox.py outbox/a.json [outbox/b.json ...]
@@ -22,7 +23,7 @@ async def main(paths):
         if not caption:
             print(f"{p}: empty caption, skipped")
             continue
-        await tg.send(caption, post.get("photo") or None)
+        await tg.send(caption, post.get("photo") or None, post.get("channel") or None)
 
 
 if __name__ == "__main__":

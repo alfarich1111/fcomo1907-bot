@@ -1,7 +1,8 @@
 """Post to @FComo1907 from the owner's own Telegram account (Telethon).
 
 Usage (run with .venv\\Scripts\\python.exe):
-  tg.py login                                   one-time sign-in (asks phone + code)
+  tg.py [--channel NAME] <command>              commands work on @FComo1907 unless --channel (or TG_CHANNEL) is set
+  tg.py login                                  one-time sign-in (asks phone + code)
   tg.py export-session                          sign in as a NEW device and copy its session string to the
                                                 clipboard (for cloud secrets; run once per cloud service)
   tg.py recent [N]                              print the last N channel posts (default 20)
@@ -24,7 +25,7 @@ from telethon import TelegramClient, types
 from telethon.sessions import StringSession
 
 HERE = Path(__file__).resolve().parent
-CHANNEL = "FComo1907"
+CHANNEL = os.environ.get("TG_CHANNEL", "FComo1907")
 CONFIG = HERE / "config.json"
 SESSION = str(HERE / "fcomo")
 
@@ -68,11 +69,11 @@ async def cmd_login():
         print(f"Signed in as {me.first_name} (@{me.username}). Session saved.")
 
 
-async def cmd_recent(n):
+async def cmd_recent(n, channel=None):
     async with client() as c:
         if not await c.is_user_authorized():
             sys.exit("Not signed in. Run: tg.py login")
-        async for m in c.iter_messages(CHANNEL, limit=n):
+        async for m in c.iter_messages(channel or CHANNEL, limit=n):
             text = (m.message or "").replace("\n", " ")
             print(f"[{m.id}] {m.date:%Y-%m-%d %H:%M} {'(photo) ' if m.photo else ''}{text[:300]}")
 
@@ -91,30 +92,32 @@ def fetch_photo(src):
     return path
 
 
-async def send(caption, photo=None):
+async def send(caption, photo=None, channel=None):
     """Post an HTML caption (optionally with a photo URL/path) to the channel; returns a result dict."""
+    channel = channel or CHANNEL
     async with client() as c:
         if not await c.is_user_authorized():
             sys.exit("Not signed in. Run: tg.py login")
         c.parse_mode = "html"  # Telethon's HTML parser understands <tg-emoji emoji-id>.
         if photo:
-            msg = await c.send_file(CHANNEL, fetch_photo(str(photo)), caption=caption)
+            msg = await c.send_file(channel, fetch_photo(str(photo)), caption=caption)
         else:
-            msg = await c.send_message(CHANNEL, caption, link_preview=False)
+            msg = await c.send_message(channel, caption, link_preview=False)
         custom = sum(isinstance(e, types.MessageEntityCustomEmoji) for e in (msg.entities or []))
-        result = {"ok": True, "message_id": msg.id, "url": f"https://t.me/{CHANNEL}/{msg.id}",
+        result = {"ok": True, "message_id": msg.id, "url": f"https://t.me/{channel}/{msg.id}",
                   "photo": bool(msg.photo), "custom_emoji": custom}
         print(json.dumps(result, ensure_ascii=False), flush=True)
         return result
 
 
-async def cmd_post(caption_file, photo):
-    await send(Path(caption_file).read_text(encoding="utf-8").strip(), photo)
+async def cmd_post(caption_file, photo, channel=None):
+    await send(Path(caption_file).read_text(encoding="utf-8").strip(), photo, channel)
 
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser()
+    p.add_argument("--channel", help="channel username (default: FComo1907 or TG_CHANNEL)")
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("login")
     ex = sub.add_parser("export-session")
@@ -130,9 +133,9 @@ def main():
     elif a.cmd == "export-session":
         asyncio.run(cmd_export_session(a.gh_secret))
     elif a.cmd == "recent":
-        asyncio.run(cmd_recent(a.n))
+        asyncio.run(cmd_recent(a.n, a.channel))
     else:
-        asyncio.run(cmd_post(a.caption_file, a.photo))
+        asyncio.run(cmd_post(a.caption_file, a.photo, a.channel))
 
 
 if __name__ == "__main__":

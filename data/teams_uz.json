@@ -1,0 +1,11 @@
+{
+  "_comment": "ESPN team id -> name as the CHELSEA UZ channel writes it (in quotes in posts); emoji = premium logo used in score lines.",
+  "363": {"name": "Chelsea", "emoji": "5456404608358326466", "color": "#1d4fd8"},
+  "364": {"name": "Liverpool", "emoji": "5456599793147090298", "color": "#c8102e"},
+  "360": {"name": "Man Utd", "emoji": "5456583098609215065", "color": "#da291c"},
+  "359": {"name": "Arsenal", "color": "#ef0107"},
+  "382": {"name": "Man City", "color": "#6cabdd"},
+  "367": {"name": "Tottenham", "color": "#132257"},
+  "361": {"name": "Newcastle", "color": "#241f20"},
+  "362": {"name": "Aston Villa", "color": "#670e36"}
+}

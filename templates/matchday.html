@@ -10,7 +10,7 @@
 </style></head>
 <body>
   <div class="top"><div class="day">$weekday</div>
-    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>@fcomo1907</div>
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>$tag</div>
     <div class="date">$date</div></div>
   <div class="rule" style="top:216px"></div>
   <div class="kicker" style="top:254px">$kicker</div>
@@ -18,15 +18,15 @@
   $left_img
   $right_img
   <div class="board">
-    <div class="team"><div class="bar" style="background:$home_color"></div><div><div class="name">$home</div><div class="role">хозяева</div></div></div>
+    <div class="team"><div class="bar" style="background:$home_color"></div><div><div class="name" style="font-size:$home_fs">$home</div><div class="role">$l_home</div></div></div>
     <div class="center"><div class="big">$time</div><div class="small">$tz</div></div>
-    <div class="team right"><div class="bar" style="background:$away_color"></div><div><div class="name">$away</div><div class="role">гости</div></div></div>
+    <div class="team right"><div class="bar" style="background:$away_color"></div><div><div class="name" style="font-size:$away_fs">$away</div><div class="role">$l_away</div></div></div>
   </div>
   <div class="headline"><span class="hl1">$hl1</span> <span class="hl2">$hl2</span></div>
   <div class="rule" style="top:1712px"></div>
   <div class="bottom">
-    <div><div class="lbl">Стадион</div><div class="val">$stadium</div></div>
-    <div><div class="lbl">В таблице</div><div class="val">$table</div></div>
-    <div><div class="lbl">Форма Комо</div><div class="form">$form</div></div>
+    <div><div class="lbl">$l_stadium</div><div class="val">$stadium</div></div>
+    <div><div class="lbl">$l_table</div><div class="val">$table</div></div>
+    <div><div class="lbl">$l_form</div><div class="form">$form</div></div>
   </div>
 </body></html>

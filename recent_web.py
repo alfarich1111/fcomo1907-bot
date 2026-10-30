@@ -1,14 +1,15 @@
 """Print the channel's latest public posts from https://t.me/s/FComo1907 (no Telegram login needed).
 
 Used by the Claude cloud routines, which can't connect to Telegram itself, to avoid duplicates.
-Usage: recent_web.py [N]   (default 30; each page holds ~20 posts, older pages are fetched as needed)
+Usage: recent_web.py [N] [channel]   (default 30 posts of FComo1907; ~20 posts per page, older pages fetched as needed)
 """
 import html
 import re
 import sys
 import urllib.request
 
-URL = "https://t.me/s/FComo1907"
+CHANNEL = sys.argv[2] if len(sys.argv) > 2 else "FComo1907"
+URL = f"https://t.me/s/{CHANNEL}"
 
 
 def fetch(url):
@@ -18,7 +19,7 @@ def fetch(url):
 
 def posts(page):
     for block in re.split(r'(?=<div class="tgme_widget_message_wrap)', page)[1:]:
-        pid = re.search(r'data-post="FComo1907/(\d+)"', block)
+        pid = re.search(rf'data-post="{CHANNEL}/(\d+)"', block, re.I)
         when = re.search(r'<time datetime="([^"]+)"', block)
         text = re.search(r'<div class="tgme_widget_message_text[^>]*>(.*?)</div>', block, re.S)
         body = re.sub(r"<br\s*/?>", " ", text.group(1)) if text else ""

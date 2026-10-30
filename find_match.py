@@ -1,11 +1,14 @@
-"""Print `event=<id>` and `league=<slug>` (GitHub Actions output format) when a Como match
-kicks off within the next 3 hours or is in progress; print nothing otherwise."""
+"""Print `event=<id>` and `league=<slug>` (GitHub Actions output format) when the team's match
+kicks off within the next 3 hours or is in progress; print nothing otherwise.
+
+Usage: find_match.py [espn_team_id]   (default 2572 = Como; Chelsea = 363)"""
 import datetime as dt
 import json
 import sys
 import urllib.request
 
-URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/2572/schedule?fixture=true"
+TEAM = sys.argv[1] if len(sys.argv) > 1 else "2572"
+URL = f"https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/{TEAM}/schedule?fixture=true"
 
 
 def main():
@@ -24,7 +27,7 @@ def main():
             print(f"league={slug}")
             print(f"{ev['name']} at {kickoff:%Y-%m-%d %H:%M}Z ({state})", file=sys.stderr)
             return
-    print("no Como match soon", file=sys.stderr)
+    print(f"no match soon for team {TEAM}", file=sys.stderr)
 
 
 if __name__ == "__main__":

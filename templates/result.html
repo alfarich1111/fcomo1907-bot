@@ -14,29 +14,29 @@
   .goal { display: flex; align-items: center; font-size: 42px; font-weight: 700; height: 77px; }
   .goal .dot { width: 18px; height: 18px; border-radius: 50%; margin-right: 26px; flex: none; }
   .goal .min { width: 160px; font-weight: 900; flex: none; }
-  .goal .who { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .goal .who { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: var(--who, 42px); }
   .goal.opp .who { color: #a9b3c9; }
 </style></head>
 <body>
   <div class="top"><div class="day">$weekday</div>
-    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>@fcomo1907</div>
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>$tag</div>
     <div class="date">$date</div></div>
   <div class="rule" style="top:216px"></div>
   <div class="kicker" style="top:254px">$kicker</div>
   <div class="board">
-    <div class="team $home_dim"><div class="logo"><img src="$home_logo"></div><div class="name">$home</div></div>
-    <div class="center"><div class="big">$score</div><div class="small">Финал</div></div>
-    <div class="team right $away_dim"><div class="logo"><img src="$away_logo"></div><div class="name">$away</div></div>
+    <div class="team $home_dim"><div class="logo"><img src="$home_logo"></div><div class="name" style="font-size:$home_fs">$home</div></div>
+    <div class="center"><div class="big">$score</div><div class="small">$l_final</div></div>
+    <div class="team right $away_dim"><div class="logo"><img src="$away_logo"></div><div class="name" style="font-size:$away_fs">$away</div></div>
   </div>
   $right_img
   <div class="k2">$k2</div>
   <div class="h1">$hl1</div>
-  <div class="h2">$hl2</div>
-  <div class="goals"><div class="lbl">Голы</div>$goals</div>
+  <div class="h2" style="font-size:$hl2_size">$hl2</div>
+  <div class="goals" style="--who:$who_fs"><div class="lbl">$l_goals</div>$goals</div>
   <div class="rule" style="top:1712px"></div>
   <div class="bottom">
-    <div><div class="lbl">В таблице</div><div class="val">$table</div></div>
-    <div><div class="lbl">Серия</div><div class="val">$series</div></div>
-    <div><div class="lbl">Форма Комо</div><div class="form">$form</div></div>
+    <div><div class="lbl">$l_table</div><div class="val">$table</div></div>
+    <div><div class="lbl">$l_series</div><div class="val">$series</div></div>
+    <div><div class="lbl">$l_form</div><div class="form">$form</div></div>
   </div>
 </body></html>

@@ -23,13 +23,13 @@
 </style></head>
 <body>
   <div class="top"><div class="day">$weekday</div>
-    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>@fcomo1907</div>
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>$tag</div>
     <div class="date">$date</div></div>
   <div class="rule" style="top:216px"></div>
-  <div class="title">Таблица <span>$subtitle</span></div>
+  <div class="title">$l_title <span>$subtitle</span></div>
   <div class="tbl">
-    <div class="row head"><div>#</div><div></div><div>Клуб</div><div class="num">И</div><div class="num">РМ</div><div class="num">О</div></div>
+    <div class="row head"><div>#</div><div></div><div>$l_club</div><div class="num">$l_p</div><div class="num">$l_gd</div><div class="num">$l_pts</div></div>
     $rows
   </div>
-  <div class="legend"><span><i style="background:#6fe08a"></i>Лига чемпионов</span><span><i style="background:#ffd166"></i>Лига Европы</span><span><i style="background:#ff7a7f"></i>Вылет</span></div>
+  <div class="legend"><span><i style="background:#6fe08a"></i>$l_cl</span><span><i style="background:#ffd166"></i>$l_el</span><span><i style="background:#ff7a7f"></i>$l_rel</span></div>
 </body></html>
