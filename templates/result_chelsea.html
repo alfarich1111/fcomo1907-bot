@@ -8,7 +8,9 @@
   .ft { position: absolute; top: 230px; left: 0; right: 0; text-align: center; }
   .ft .tag { display: inline-block; background: #e5b43b; color: #021c4f; font-weight: 900; font-size: 28px;
     letter-spacing: 10px; padding: 12px 38px; border-radius: 10px; text-transform: uppercase; }
-  .ft .comp { margin-top: 18px; font-size: 24px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; opacity: .85; }
+  .ft .row { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 14px; }
+  .comp-logo { height: 76px; max-width: 160px; object-fit: contain; }
+  .ft .comp { margin-top: 0; font-size: 24px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; opacity: .85; }
   .board { left: 80px; right: 80px; top: 400px; height: 210px; display: grid; grid-template-columns: 1fr auto 1fr;
     align-items: center; padding: 0 40px; z-index: 2; }
   .team { display: flex; align-items: center; gap: 26px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; white-space: nowrap; }
@@ -37,7 +39,7 @@
     <div class="when">$date<small>$weekday</small></div>
   </div>
   <div class="goldline" style="top:196px"></div>
-  <div class="ft"><div class="tag">Uchrashuv yakunlandi</div><div class="comp">$kicker</div></div>
+  <div class="ft"><div class="tag">Uchrashuv yakunlandi</div><div class="row">$comp_logo<div class="comp">$kicker</div></div></div>
   <div class="panel board">
     <div class="team $home_dim"><div class="logo"><img src="$home_logo"></div><span style="font-size:$home_fs">$home</span></div>
     <div class="score">$score_h<i>:</i>$score_a</div>

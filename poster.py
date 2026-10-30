@@ -104,6 +104,35 @@ def name_size(name, base=76):
     return f"{base if n <= 7 else max(44, int(base * 7.5 / n))}px"
 
 
+KICKER_LEAGUES = [("premer", "eng.1"), ("premier", "eng.1"), ("carabao", "eng.league_cup"), ("liga kubogi", "eng.league_cup"),
+                  ("fa cup", "eng.fa"), ("angliya kubogi", "eng.fa"), ("chempionlar", "uefa.champions"),
+                  ("champions", "uefa.champions"), ("konferens", "uefa.europa.conf"), ("conference", "uefa.europa.conf"),
+                  ("yevropa", "uefa.europa"), ("europa", "uefa.europa"), ("jahon", "fifa.cwc"), ("club world", "fifa.cwc")]
+
+
+def league_from_kicker(kicker):
+    """Guess the ESPN league slug from a kicker like "Premer-liga · 10-tur" when the spec has no "league"."""
+    k = kicker.lower()
+    return next((slug for word, slug in KICKER_LEAGUES if word in k), "")
+
+
+def comp_logo(league):
+    """Competition logo (white "dark" variant) for an ESPN league slug, e.g. eng.1 -> Premier League."""
+    if not league:
+        return ""
+    try:
+        req = urllib.request.Request(f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard",
+                                     headers={"User-Agent": "Mozilla/5.0"})
+        logos = json.loads(urllib.request.urlopen(req, timeout=30).read())["leagues"][0].get("logos", [])
+    except Exception:
+        return ""
+    for rel in ("dark", "default"):
+        for l in logos:
+            if rel in l.get("rel", []) and "leaguelogos" in l["href"]:
+                return l["href"]
+    return ""
+
+
 def img_tag(cls, src):
     return f'<img class="cut {cls}" src="{uri(src)}">' if src else ""
 
@@ -122,6 +151,8 @@ def build(kind, spec):
         for side in ("home", "away"):
             if spec.get(f"{side}_logo"):
                 s[f"{side}_logo"] = uri(spec[f"{side}_logo"])
+        logo = comp_logo(spec.get("league") or league_from_kicker(spec.get("kicker", "")))
+        s["comp_logo"] = f'<img class="comp-logo" src="{uri(logo)}">' if logo else ""
         h, _, a = str(spec.get("score", "")).partition(":")
         s["score_h"], s["score_a"] = esc(h), esc(a)
     if kind == "matchday":
