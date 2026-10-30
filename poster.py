@@ -133,6 +133,37 @@ def comp_logo(league):
     return ""
 
 
+def auto_photo_pos(src, aspect=0.8):
+    """CSS object-position for a full-bleed result photo: keep the players inside the frame and out of the
+    top-right corner, where the crests and the score are written (people found with rembg)."""
+    try:
+        from PIL import Image
+        from rembg import new_session, remove
+
+        img = Image.open(fetch(src)).convert("RGB")
+        img.thumbnail((480, 480))
+        mask = remove(img, session=new_session("u2net_human_seg"), only_mask=True).point(lambda v: 1 if v > 128 else 0)
+    except Exception as e:
+        print("auto_photo_pos:", e, flush=True)
+        return ""
+    w, h = mask.size
+    if w / h <= aspect:  # portrait photo: the full width is visible, keep the default vertical position
+        return ""
+    vw = int(h * aspect)
+    px = mask.load()
+    cols = [sum(px[x, y] for y in range(h)) for x in range(w)]
+    top = [sum(px[x, y] for y in range(int(h * .42))) for x in range(w)]
+    best, best_x = None, 50
+    for step in range(21):
+        ox = (w - vw) * step // 20
+        inside = sum(cols[ox:ox + vw])
+        corner = sum(top[ox + int(vw * .5):ox + vw])
+        score = inside - 3 * corner
+        if best is None or score > best:
+            best, best_x = score, step * 5
+    return f"{best_x}% 25%"
+
+
 def img_tag(cls, src):
     return f'<img class="cut {cls}" src="{uri(src)}">' if src else ""
 
@@ -176,7 +207,7 @@ def build(kind, spec):
             # Themed result: full-width team photo, one-line headline and our scorers as "Palmer 23', 67'".
             # photo_pos (CSS object-position) picks which part of the photo shows, e.g. "75% 20%" keeps the
             # players on the left and leaves the top-right free for the score.
-            pos = esc(spec.get("photo_pos") or "center 25%")
+            pos = esc(spec.get("photo_pos") or (auto_photo_pos(spec["photo"]) if spec.get("photo") else "") or "center 25%")
             s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">' if spec.get("photo") else ""
             s["hl_size"] = headline_size(f"{spec.get('hl1', '')} {spec.get('hl2', '')}", width=2150, base=190, min_size=100)
             mins = {}

@@ -1,6 +1,6 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><link rel="stylesheet" href="chelsea.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&display=block">
 <style>
   /* Full-bleed match photo with the result written on top of it (no poster background). */
   body { background: #021c4f; }
@@ -9,17 +9,21 @@
     background: radial-gradient(ellipse 70% 45% at 88% 12%, rgba(2,12,40,.55), transparent 70%),
                 linear-gradient(to bottom, rgba(2,12,40,.35), transparent 22%, transparent 78%, rgba(2,12,40,.55)); }
   .brand { position: absolute; top: 60px; left: 70px; }
-  .brand .lg { width: 150px; height: 150px; filter: drop-shadow(0 8px 20px rgba(0,0,0,.5)); }
-  .res { position: absolute; top: 70px; right: 90px; width: 640px; text-align: center; color: #fff;
+  .brand .lg { width: 160px; height: 160px; border-radius: 50%; box-shadow: 0 0 0 5px rgba(229,180,59,.9), 0 14px 34px rgba(0,0,0,.5); }
+  .res { position: absolute; top: 70px; right: 90px; width: 700px; text-align: center; color: #fff;
     text-shadow: 0 6px 30px rgba(0,0,0,.45); }
-  .crests { display: flex; justify-content: center; gap: 46px; }
-  .crests img { width: 190px; height: 190px; object-fit: contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,.45)); }
-  .score { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 330px; line-height: 1; margin-top: 30px;
-    letter-spacing: 4px; }
-  .score i { font-style: normal; display: inline-block; padding: 0 26px; transform: translateY(-14px); font-weight: 400; }
-  .ft { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 92px; line-height: 1; margin-top: 6px;
-    letter-spacing: 2px; text-transform: uppercase; }
-  .comp-logo { position: absolute; right: 80px; bottom: 70px; height: 150px; max-width: 280px; object-fit: contain;
+  .crests { display: flex; justify-content: center; align-items: center; gap: 34px; }
+  .crests .c { width: 196px; height: 196px; border-radius: 50%; background: rgba(255,255,255,.94); display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 0 0 5px rgba(229,180,59,.9), 0 16px 40px rgba(0,0,0,.45); }
+  .crests .c img { width: 136px; height: 136px; object-fit: contain; }
+  .crests .sep { width: 3px; height: 120px; background: linear-gradient(transparent, #e5b43b, transparent); }
+  .score { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 700; font-size: 300px; line-height: 1; margin-top: 34px;
+    white-space: nowrap; display: flex; justify-content: center; align-items: center; }
+  .score i { display: inline-block; width: 70px; height: 10px; margin: 0 34px; background: #e5b43b; border-radius: 5px; }
+  .ft { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; line-height: 1;
+    letter-spacing: 12px; text-transform: uppercase; color: #fff; padding: 16px 10px 16px 22px;
+    border-top: 3px solid #e5b43b; border-bottom: 3px solid #e5b43b; }
+  .comp-logo { position: absolute; right: 80px; bottom: 70px; height: 140px; max-width: 280px; object-fit: contain;
     filter: drop-shadow(0 8px 20px rgba(0,0,0,.5)); }
 </style></head>
 <body>
@@ -27,9 +31,9 @@
   <div class="shade"></div>
   <div class="brand"><img class="lg" src="../assets/cfc_uz_logo.png"></div>
   <div class="res">
-    <div class="crests"><img src="$home_logo"><img src="$away_logo"></div>
-    <div class="score">$score_h<i>–</i>$score_a</div>
-    <div class="ft">Full-time</div>
+    <div class="crests"><div class="c"><img src="$home_logo"></div><div class="sep"></div><div class="c"><img src="$away_logo"></div></div>
+    <div class="score"><span>$score_h</span><i></i><span>$score_a</span></div>
+    <div class="ft">O'yin yakunlandi</div>
   </div>
   $comp_logo
 </body></html>

@@ -14,6 +14,7 @@ import re
 import sys
 import time
 import unicodedata
+import urllib.request
 from pathlib import Path
 
 import live
@@ -178,15 +179,70 @@ def series_uz(res):
     return {"W": "G'alaba", "D": "Durang", "L": "Mag'lubiyat"}[last]
 
 
-def result_post(m, dry):
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+
+
+def http(url):
+    return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30).read().decode("utf-8", "replace")
+
+
+def slug_words(t):
+    return [w for w in re.sub(r"[^a-z ]", " ", plain(t.get("shortDisplayName") or t.get("displayName") or "").lower()).split()
+            if len(w) > 2 and w not in ("fc", "afc", "the")]
+
+
+def match_photo(m):
+    """A photo from THIS match: the chelseafc.com match report image (published at the final whistle),
+    else ESPN's recap photo. Returns a URL or ""."""
+    h, a = m.score
+    try:
+        news = "".join(http(f"https://www.chelseafc.com/en/news/latest-news?page={n}") for n in (1, 2, 3))
+        opp_words = slug_words(m.opp["team"])
+        for slug in dict.fromkeys(re.findall(r"/en/news/article/(match-report-[a-z0-9-]+)", news)):
+            if f"-{h}-{a}-" in f"-{slug}-" and any(w in slug for w in opp_words) and "women" not in slug:
+                page = http(f"https://www.chelseafc.com/en/news/article/{slug}")
+                og = re.search(r'property="og:image" content="([^"]+)"', page)
+                if og:
+                    return re.sub(r"/upload/[^/]*/", "/upload/c_fit,h_2000,w_3000,f_jpg/", og.group(1), count=1)
+    except Exception as e:
+        print("chelseafc photo:", e, flush=True)
+    try:
+        summary = json.loads(http(f"https://site.api.espn.com/apis/site/v2/sports/soccer/{m.league}/summary?event={m.id}"))
+        # Only a photo of OUR players: the caption must name a Chelsea player and no opponent player.
+        ours, theirs = set(), set()
+        for r in summary.get("rosters", []):
+            names = {(p.get("athlete") or {}).get("lastName", "") for p in r.get("roster", [])} - {""}
+            (ours if r.get("team", {}).get("id") == TEAM_ID else theirs).update(names)
+        for im in (summary.get("article") or {}).get("images", []):
+            cap = im.get("caption") or ""
+            if ((im.get("width") or 0) >= 1000 and im.get("url", "").startswith("https://a.espncdn.com/photo/")
+                    and any(n in cap for n in ours) and not any(n in cap for n in theirs)):
+                return im["url"]
+    except Exception as e:
+        print("espn photo:", e, flush=True)
+    return ""
+
+
+def result_post(m, dry, wait=0):
     live.WORK.mkdir(exist_ok=True)
     ch, ca = (m.score if m.como_home else m.score[::-1])
     opp = team(m.opp["team"])["name"]
     win, draw = ch > ca, ch == ca
     local = m.kickoff.astimezone(TZ)
     meta = live.remote_meta(m.id) if not dry else {}
-    # Result poster: a photo of Chelsea players together (URL from the match-day task), else the stock one.
-    photo = meta.get("result_photo") or str(live.HERE / "assets" / "chelsea_team.jpg")
+    # Result poster photo: a fresh photo of THIS match (wait a few minutes for it after the final whistle),
+    # else the recent photo the match-day task picked, else the stock one.
+    photo, deadline = "", time.time() + wait
+    while not photo:
+        photo = match_photo(m)
+        if photo or time.time() > deadline:
+            break
+        time.sleep(60)
+    pos = ""
+    if not photo and meta.get("result_photo"):
+        photo, pos = meta["result_photo"], meta.get("result_photo_pos", "")
+    photo = photo or str(live.HERE / "assets" / "chelsea_team.jpg")
+    print("result photo:", photo, flush=True)
     rnd, rank, pts = league_round(m.league) if m.league == "eng.1" else (None, None, None)
     base = meta.get("kicker") or " · ".join(p for p in [LEAGUE_UZ.get(m.league, ""), f"{rnd}-tur" if rnd else ""] if p)
     form = live.recent_form(m.id)
@@ -200,7 +256,7 @@ def result_post(m, dry):
         "away_logo": f"https://a.espncdn.com/i/teamlogos/soccer/500/{m.away['team']['id']}.png",
         "score": f"{m.score[0]}:{m.score[1]}",
         "winner": "" if draw else ("home" if m.score[0] > m.score[1] else "away"),
-        "photo": photo, "photo_pos": meta.get("result_photo_pos", "") if meta.get("result_photo") else "",
+        "photo": photo, "photo_pos": pos,
         "k2": ("Uyda g'alaba" if m.como_home else "Safarda g'alaba") if win else ("Hisob teng" if draw else "Afsuski"),
         "hl1": ("Kambek" if m.state.get("trailed") else "G'alaba") if win else ("Durang" if draw else "Mag'lubiyat"),
         "hl2": f"{opp} ustidan" if win else (f"{opp} bilan" if draw else f"{opp}ga qarshi"),
@@ -276,7 +332,7 @@ async def run(event_id, league, dry):
             m.save()
         if m.status.get("completed") or m.status.get("state") == "post":
             if not m.state["result"]:
-                caption, png = result_post(m, dry)
+                caption, png = result_post(m, dry, wait=0 if dry else 600)
                 await send(caption, png)
                 m.state["result"] = True
                 m.save()
