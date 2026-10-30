@@ -133,7 +133,7 @@ def comp_logo(league):
     return ""
 
 
-def auto_photo_pos(src, aspect=0.8):
+def auto_photo_pos(src, aspect=0.8, avoid_corner=True):
     """CSS object-position for a full-bleed result photo: keep the players inside the frame and out of the
     top-right corner, where the crests and the score are written (people found with rembg)."""
     try:
@@ -158,7 +158,7 @@ def auto_photo_pos(src, aspect=0.8):
         ox = (w - vw) * step // 20
         inside = sum(cols[ox:ox + vw])
         corner = sum(top[ox + int(vw * .5):ox + vw])
-        score = inside - 3 * corner
+        score = inside - 3 * corner if avoid_corner else inside
         if best is None or score > best:
             best, best_x = score, step * 5
     return f"{best_x}% 25%"
@@ -189,7 +189,7 @@ def build(kind, spec):
         # Full-bleed photo posters: photo_pos (CSS object-position) picks which part of the photo shows,
         # e.g. "75% 20%" keeps the players on the left and leaves the top-right free for the text.
         if spec.get("photo"):
-            pos = esc(spec.get("photo_pos") or auto_photo_pos(spec["photo"]) or "center 25%")
+            pos = esc(spec.get("photo_pos") or auto_photo_pos(spec["photo"], avoid_corner=kind != "result") or "center 25%")
             s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">'
         else:
             s["photo"] = ""
@@ -219,7 +219,7 @@ def build(kind, spec):
                 if g.get("como"):
                     mins.setdefault(g["who"], []).append(str(g["min"]))
             scorers = ", ".join(f"{who} {', '.join(m)}" for who, m in mins.items())
-            s["scorers"] = esc(scorers or "—")
+            s["scorers"] = esc(scorers)
             s["scorers_fs"] = "40px" if len(scorers) <= 24 else ("34px" if len(scorers) <= 44 else "28px")
             s["goals"] = "".join(
                 f'<div class="goal{"" if g.get("como") else " opp"}"><span class="m">{esc(g["min"])}</span>'
