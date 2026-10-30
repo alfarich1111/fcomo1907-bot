@@ -6,10 +6,12 @@
   .kicker { top: 440px; }
   .vsbg { position: absolute; top: 560px; left: 0; right: 0; text-align: center; font-family: 'Bebas Neue', sans-serif;
     font-size: 760px; line-height: 1; color: transparent; -webkit-text-stroke: 4px rgba(229,180,59,.45); }
-  /* Upper-body crop of the player cutouts: fill the box and keep the head at the top. */
-  .cut.l, .cut.r { top: 500px; width: 820px; height: 1040px; object-fit: cover; object-position: top center;
-    filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
-  .cut.l { left: -20px; } .cut.r { right: -20px; }
+  /* Studio portraits (head to waist, transparent background), standing on the team bar. */
+  .cut.l, .cut.r { top: 520px; width: 800px; height: 940px; object-fit: contain; object-position: bottom center;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,.45));
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); }
+  .cut.l { left: -10px; } .cut.r { right: -10px; }
   .bar { left: 80px; right: 80px; top: 1440px; height: 160px; display: grid; grid-template-columns: 1fr auto 1fr;
     align-items: center; padding: 0 40px; }
   .team { display: flex; align-items: center; gap: 26px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; white-space: nowrap; }
