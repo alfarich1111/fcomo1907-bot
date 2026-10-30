@@ -189,7 +189,7 @@ def build(kind, spec):
         # Full-bleed photo posters: photo_pos (CSS object-position) picks which part of the photo shows,
         # e.g. "75% 20%" keeps the players on the left and leaves the top-right free for the text.
         if spec.get("photo"):
-            pos = esc(spec.get("photo_pos") or auto_photo_pos(spec["photo"], avoid_corner=False) or "center 25%")
+            pos = esc(spec.get("photo_pos") or auto_photo_pos(spec["photo"], avoid_corner=kind != "result") or "center 25%")
             s["photo"] = f'<img class="photo" src="{uri(spec["photo"])}" style="object-position:{pos}">'
         else:
             s["photo"] = ""
