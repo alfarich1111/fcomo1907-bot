@@ -42,7 +42,7 @@ def main():
         url = f"{URL}?before={min(p[0] for p in batch)}"
     for pid in sorted(seen, reverse=True)[:n]:
         _, when, photo, body = seen[pid]
-        print(f"[{pid}] {when} {'(photo) ' if photo else ''}{body[:300]}")
+        print(f"[{pid}] {when} {'(photo) ' if photo else ''}{body}")
 
 
 if __name__ == "__main__":

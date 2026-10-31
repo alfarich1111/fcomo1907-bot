@@ -25,3 +25,5 @@ Before writing any @FComo1907 caption, read `data/como_style.md` and write like 
 # No repeated news (both channels)
 
 The owner does not want the same news twice. Read `python recent_web.py 300 CHELSI_CHELSEAUZ_CFCUZ` for Chelsea or `python recent_web.py 100` for Como before choosing a story. Don't post a story or angle already covered in the last 14 days, by anyone, even in other words. Only a genuinely new fact justifies a new post, and then the post says only that new fact.
+
+A fact counts as already posted if it appears anywhere in a channel post, including in the middle or at the end of a post about something else, by anyone. recent_web.py prints the full text of each post. Before you write, take the names and the key fact of your story and search for them, for example `python recent_web.py 100 | grep -i "камельо"`. If the fact is there, don't post it and don't repeat it inside a new post on another subject either: a new post must not re-tell facts the channel already gave.
