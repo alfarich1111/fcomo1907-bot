@@ -9,6 +9,7 @@ This script posts every given JSON file in order, via tg.py (the owner's account
 Usage: outbox.py outbox/a.json [outbox/b.json ...]
 """
 import asyncio
+import datetime as dt
 import json
 import sys
 from pathlib import Path
@@ -16,6 +17,17 @@ from pathlib import Path
 import tg
 
 CHELSEA = "CHELSI_CHELSEAUZ_CFCUZ"
+PREVIEW = Path(__file__).resolve().parent / "data" / "preview_como_until.txt"
+
+
+def target(post):
+    """Until the time in PREVIEW, @FComo1907 posts go to the owner's Saved Messages for review."""
+    channel = post.get("channel") or None
+    if channel is None and PREVIEW.exists():
+        until = dt.datetime.fromisoformat(PREVIEW.read_text(encoding="utf-8").strip())
+        if dt.datetime.now(dt.timezone.utc) < until:
+            return "me"
+    return channel
 
 
 def stamped(post):
@@ -40,7 +52,7 @@ async def main(paths):
         if not caption:
             print(f"{p}: empty caption, skipped")
             continue
-        await tg.send(caption, stamped(post), post.get("channel") or None)
+        await tg.send(caption, stamped(post), target(post))
 
 
 if __name__ == "__main__":
