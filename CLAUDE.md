@@ -17,3 +17,11 @@ The owner wants new, high-quality photos on every post. Follow this whenever you
 Before deciding to post nothing on @FComo1907, really look: run at least 4 web searches, including Como's youth team (Primavera, U19), Fabregas' latest words, Como transfer news, and Italian local press. Deciding from the channel's history alone is not allowed. Posting nothing is right only if those searches found nothing worthwhile.
 
 To count today's @FComo1907 posts: recent_web.py shows UTC times and a Moscow day starts at 21:00 UTC of the previous date. Count only posts after that time, by their timestamps, not by post numbers.
+
+# @FComo1907 writing style
+
+Before writing any @FComo1907 caption, read `data/como_style.md` and write like those posts: very short, in a fan's voice. It overrides the format in a task.
+
+# No repeated news (both channels)
+
+The owner does not want the same news twice. Read `python recent_web.py 100 <channel>` (for Como: `python recent_web.py 100`) before choosing a story. Don't post a story or angle already covered in the last 14 days, by anyone, even in other words. Only a genuinely new fact justifies a new post, and then the post says only that new fact.
