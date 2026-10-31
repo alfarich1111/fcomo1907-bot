@@ -15,3 +15,5 @@ The owner wants new, high-quality photos on every post. Follow this whenever you
 # Como news posts
 
 Before deciding to post nothing on @FComo1907, really look: run at least 4 web searches, including Como's youth team (Primavera, U19), Fabregas' latest words, Como transfer news, and Italian local press. Deciding from the channel's history alone is not allowed. Posting nothing is right only if those searches found nothing worthwhile.
+
+To count today's @FComo1907 posts: recent_web.py shows UTC times and a Moscow day starts at 21:00 UTC of the previous date. Count only posts after that time, by their timestamps, not by post numbers.
