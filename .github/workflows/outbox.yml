@@ -40,5 +40,5 @@ jobs:
           TG_API_HASH: ${{ secrets.TG_API_HASH }}
           TG_SESSION: ${{ secrets.TG_SESSION }}
         run: |
-          pip install -q telethon
+          pip install -q telethon pillow
           python outbox.py ${{ steps.new.outputs.files }}

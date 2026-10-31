@@ -15,6 +15,23 @@ from pathlib import Path
 
 import tg
 
+CHELSEA = "CHELSI_CHELSEAUZ_CFCUZ"
+
+
+def stamped(post):
+    """CHELSEA UZ photos carry the channel name; its own posters already have it, so they are left alone."""
+    photo, channel = post.get("photo") or None, post.get("channel") or ""
+    caption = post.get("caption") or ""
+    if not photo or channel not in (CHELSEA, "me") or "#MatchDay" in caption or "Keyingi o'yin" in caption:
+        return photo
+    try:
+        from stamp import stamp
+
+        return stamp(tg.fetch_photo(str(photo)))
+    except Exception as e:
+        print(f"stamp failed, posting the photo as it is: {e}", flush=True)
+        return photo
+
 
 async def main(paths):
     for p in sorted(paths):
@@ -23,7 +40,7 @@ async def main(paths):
         if not caption:
             print(f"{p}: empty caption, skipped")
             continue
-        await tg.send(caption, post.get("photo") or None, post.get("channel") or None)
+        await tg.send(caption, stamped(post), post.get("channel") or None)
 
 
 if __name__ == "__main__":
