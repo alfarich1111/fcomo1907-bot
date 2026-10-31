@@ -11,3 +11,7 @@ The owner wants new, high-quality photos on every post. Follow this whenever you
 - Quality: sharp, not stretched or heavily compressed. Get the largest version: on chelseafc.com images (res.cloudinary.com/chelsea-production) use c_fit,h_2000,w_3000,f_jpg, and elsewhere remove resize parameters such as ?w=, ?width=, ?resize= from the image URL.
 - Run `python photo_check.py <file>` on the downloaded file. If it says LOW, look for a better photo in other articles on the same story (club site, ESPN, BBC, Sky Sports, agencies). Use a LOW photo only if nothing better exists after trying at least 3 sources, and say so in your report.
 - Look at it before posting. It must fit the story and show the right person or club. Reject watermarks, other channels' logos, finished graphics or posters with text, screenshots, collages, and photos with the opponent as the main subject of a Chelsea or Como story.
+
+# Como news posts
+
+Before deciding to post nothing on @FComo1907, really look: run at least 4 web searches, including Como's youth team (Primavera, U19), Fabregas' latest words, Como transfer news, and Italian local press. Deciding from the channel's history alone is not allowed. Posting nothing is right only if those searches found nothing worthwhile.
