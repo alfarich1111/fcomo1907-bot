@@ -27,3 +27,11 @@ Before writing any @FComo1907 caption, read `data/como_style.md` and write like 
 The owner does not want the same news twice. Read `python recent_web.py 300 CHELSI_CHELSEAUZ_CFCUZ` for Chelsea or `python recent_web.py 100` for Como before choosing a story. Don't post a story or angle already covered in the last 14 days, by anyone, even in other words. Only a genuinely new fact justifies a new post, and then the post says only that new fact.
 
 A fact counts as already posted if it appears anywhere in a channel post, including in the middle or at the end of a post about something else, by anyone. recent_web.py prints the full text of each post. Before you write, take the names and the key fact of your story and search for them, for example `python recent_web.py 100 | grep -i "камельо"`. If the fact is there, don't post it and don't repeat it inside a new post on another subject either: a new post must not re-tell facts the channel already gave.
+
+# CHELSEA UZ sources
+
+The owner wants more than ESPN. ESPN is for checking scores, fixtures and the table in the background. Don't build a post from ESPN data or name ESPN as the source, unless it is ESPN's own exclusive report.
+
+- News: start with @CFC_ChelseaFC, then chelseafc.com, Fabrizio Romano, David Ornstein and The Athletic (Simon Johnson, Liam Twomey), BBC Sport (Nizaar Kinsella), Telegraph (Matt Law), Sky Sports, Daily Mail (Kieran Gill), Standard Sport (Sam Tabuteau), Football London (Bobby Vincent), Guardian, talkSPORT (Ben Jacobs).
+- Statistics: Opta, WhoScored, Sofascore, FotMob, Squawka, premierleague.com. Name the one you used.
+- Check the last 10 channel posts and pick a different source from the ones they name when the story allows it. Never change or invent a source to get variety: name the source you really used.
