@@ -3,7 +3,8 @@
 registan_patch.py IN OUT --patch "x0,y0,x1,y1|font size|weight|text" [--patch ...]
 
 The box must hold only the old text on a plain or gradient background, with the
-same background just outside its left and right sides.
+same background just outside its sides. A weight ending in c ("400c") centres the text;
+\\n in the text starts a new line.
 """
 import argparse
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -35,7 +36,8 @@ def wrap(draw, text, f, width):
 def erase(img, box):
     x0, y0, x1, y1 = box
     m = 6
-    px = img.load()
+    px = img.filter(ImageFilter.GaussianBlur(3)).load()
+    out = img.load()
     c = [px[x0 - m, y0 - m], px[x1 + m, y0 - m], px[x0 - m, y1 + m], px[x1 + m, y1 + m]]
     for y in range(y0, y1):
         s = (y - y0) / (y1 - y0)
@@ -43,14 +45,14 @@ def erase(img, box):
         for x in range(x0, x1):
             t = (x - x0) / (x1 - x0)
             top, bottom = px[x, y0 - m], px[x, y1 + m]
-            px[x, y] = tuple(round(
+            out[x, y] = tuple(round(
                 (1 - t) * left[i] + t * right[i] + (1 - s) * top[i] + s * bottom[i]
                 - (1 - s) * ((1 - t) * c[0][i] + t * c[1][i]) - s * ((1 - t) * c[2][i] + t * c[3][i])
             ) for i in range(3))
-    img.paste(img.crop(box).filter(ImageFilter.GaussianBlur(5)), box[:2])
+    img.paste(img.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
 
 
-def write(img, box, size, weight, text):
+def write(img, box, size, weight, text, center=False):
     x0, y0, x1, y1 = box
     draw = ImageDraw.Draw(img)
     while True:
@@ -62,7 +64,8 @@ def write(img, box, size, weight, text):
         size -= 1
     y = y0 + (y1 - y0 - step * len(lines)) // 2
     for line in lines:
-        draw.text((x0, y), line, font=f, fill="white")
+        x = (x0 + x1 - draw.textlength(line, font=f)) / 2 if center else x0
+        draw.text((x, y), line, font=f, fill="white")
         y += step
     print(f"box {box}: size {size}, {len(lines)} lines")
 
@@ -78,7 +81,7 @@ def main():
         box, size, weight, text = spec.split("|", 3)
         box = tuple(int(v) for v in box.split(","))
         erase(img, box)
-        write(img, box, int(size), int(weight), text.replace("\\n", "\n"))
+        write(img, box, int(size), int(weight.rstrip("c")), text.replace("\\n", "\n"), weight.endswith("c"))
     img.save(a.out, quality=93)
 
 
