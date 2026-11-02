@@ -34,7 +34,7 @@ def stamped(post):
     """CHELSEA UZ photos carry the channel name; its own posters already have it, so they are left alone."""
     photo, channel = post.get("photo") or None, post.get("channel") or ""
     caption = post.get("caption") or ""
-    if not photo or channel not in (CHELSEA, "me") or "#MatchDay" in caption or "Keyingi o'yin" in caption:
+    if not photo or channel not in (CHELSEA, "me") or "#MatchDay" in caption or "Keyingi o'yin" in caption or "registan" in caption.lower():
         return photo
     try:
         from stamp import stamp
