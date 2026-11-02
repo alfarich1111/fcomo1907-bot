@@ -27,7 +27,7 @@ Don't invent facts about the Nukus branch: its teachers, prices, groups, results
 
 ## Karakalpak
 Write in Karakalpak Latin only, with correct letters: á, ǵ, ı, ń, ó, ú. Rewrite naturally, not word for word. Read the channel's latest posts first and use their vocabulary:
-«oqıw orayı», «oqıwshılar», «ustaz», «perzentińiz», «Menedjerler menen baylanısıw», «Kommentke jazıp ketiń», «Házir jazılıń».
+«oqıw orayı», «oqıwshılar», «ustaz», «perzentińiz», «Menedjerler menen baylanısıw», «Kommentke jazıp ketiń», «Házir jazılıń», «naqıl sózler» for quotes.
 If you aren't sure a sentence is correct Karakalpak, rewrite it more simply. English examples in a lesson stay in English.
 Use the name «Registan oqıw orayı».
 
@@ -40,7 +40,7 @@ End every post with exactly:
 +998 77 446 2700
 
 ## Photo
-Telegram photo URLs from the branch feed may be used only if the picture has no other branch's name, phone or address, no people from that branch, and no text about a date or price. The general logo «REGISTON O'QUV MARKAZI» with no branch name is fine; leave it as it is. LOOK at it first. If none is clean, post text only. Never edit another branch's name out of a picture. Don't reuse a photo the channel used recently.
+Telegram photo URLs from the branch feed may be used only if the picture has no other branch's name, phone or address, no people from that branch, and no text about a date or price. The general logo «REGISTON O'QUV MARKAZI» with no branch name is allowed, but must become the channel's own logo: add `--logo x0,y0,x1,y1` to registan_patch.py, with a box a little larger than the old logo. LOOK at it first. If none is clean, post text only. Never edit another branch's name out of a picture. Don't reuse a photo the channel used recently.
 
 ## Text inside pictures
 Uzbek or Russian text in a picture must become Karakalpak. English quotes and names stay. Download the picture and replace each text block:
@@ -53,3 +53,4 @@ Use `"photo": "outbox/$TS.jpg"` in the outbox file, and add a short Karakalpak c
 
 ## No repeats
 Read `python recent_web.py 200 registan_nukus` first. Don't publish a topic or tip the channel already has in that list.
+Admins also post here, and a picture's text isn't in the caption, so captions alone miss repeats. Get the photos of the channel's latest posts with `python -c "import registan_feed as f; [print(p['id'], p['photo']) for p in f.fetch('registan_nukus')]"`, download them and LOOK at them. If the same picture or series is there, in any design, don't post it. Do this again right before publishing.

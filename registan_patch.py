@@ -1,6 +1,6 @@
 """Replace text inside a picture with Karakalpak text, keeping the background.
 
-registan_patch.py IN OUT --patch "x0,y0,x1,y1|font size|weight|text" [--patch ...]
+registan_patch.py IN OUT [--logo x0,y0,x1,y1] --patch "x0,y0,x1,y1|font size|weight|text" [--patch ...]
 
 The box must hold only the old text on a plain or gradient background, with the
 same background just outside its sides. A weight ending in c ("400c") centres the text;
@@ -10,6 +10,7 @@ import argparse
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 FONT = "assets/fonts/Inter.ttf"
+LOGO = "assets/registan_nukus_logo.png"
 
 
 def font(size, weight):
@@ -52,6 +53,16 @@ def erase(img, box):
     img.paste(img.crop(box).filter(ImageFilter.GaussianBlur(14)), box[:2])
 
 
+def logo(img, box):
+    """Replace the general Registon logo in box with the white Nukus branch logo."""
+    erase(img, box)
+    mark = Image.open(LOGO).convert("RGBA")
+    pad = round((box[3] - box[1]) * 0.08)
+    h = box[3] - box[1] - 2 * pad
+    mark = mark.resize((round(mark.width * h / mark.height), h), Image.LANCZOS)
+    img.paste(mark, (box[0] + pad, box[1] + pad), mark)
+
+
 def write(img, box, size, weight, text, center=False):
     x0, y0, x1, y1 = box
     draw = ImageDraw.Draw(img)
@@ -74,9 +85,12 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("src")
     p.add_argument("out")
-    p.add_argument("--patch", action="append", required=True)
+    p.add_argument("--patch", action="append", default=[])
+    p.add_argument("--logo", help="x0,y0,x1,y1 of the general Registon logo")
     a = p.parse_args()
     img = Image.open(a.src).convert("RGB")
+    if a.logo:
+        logo(img, tuple(int(v) for v in a.logo.split(",")))
     for spec in a.patch:
         box, size, weight, text = spec.split("|", 3)
         box = tuple(int(v) for v in box.split(","))
