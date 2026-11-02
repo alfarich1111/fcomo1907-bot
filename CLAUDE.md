@@ -30,7 +30,11 @@ A fact counts as already posted if it appears anywhere in a channel post, includ
 
 # CHELSEA UZ sources
 
-The owner wants more than ESPN. ESPN is for checking scores, fixtures and the table in the background. Don't build a post from ESPN data or name ESPN as the source, unless it is ESPN's own exclusive report.
+The owner wants more than ESPN. ESPN is for checking scores, fixtures and the table in the background. Don't build a post from ESPN data or name ESPN as the source, unless it is ESPN's own exclusive report. Never write «ESPN ma'lumotlari». Statistics come from English sources that published them (Opta, Squawka, WhoScored, Sofascore, FotMob, premierleague.com, The Athletic, BBC Sport, Sky Sports), named in the source line. If no English source has the number, don't post it.
+
+# CHELSEA UZ history posts
+
+The owner doesn't want minor #Kun_tarixi posts (2 Nov 2026, about post 4445: an ordinary 1:0 league win a year ago, «aytarli voqea emas»). Post #Kun_tarixi only for a really memorable moment: a trophy or a final, a club record, a legend's debut or farewell, a famous win that fans still talk about. An ordinary league match, however recent, is never one. If today has no such moment, choose another topic.
 
 - News: start with @CFC_ChelseaFC, then chelseafc.com, Fabrizio Romano, David Ornstein and The Athletic (Simon Johnson, Liam Twomey), BBC Sport (Nizaar Kinsella), Telegraph (Matt Law), Sky Sports, Daily Mail (Kieran Gill), Standard Sport (Sam Tabuteau), Football London (Bobby Vincent), Guardian, talkSPORT (Ben Jacobs).
 - Statistics: Opta, WhoScored, Sofascore, FotMob, Squawka, premierleague.com. Name the one you used.
