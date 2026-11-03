@@ -39,7 +39,3 @@ The owner doesn't want minor #Kun_tarixi posts (2 Nov 2026, about post 4445: an 
 - News: start with @CFC_ChelseaFC, then chelseafc.com, Fabrizio Romano, David Ornstein and The Athletic (Simon Johnson, Liam Twomey), BBC Sport (Nizaar Kinsella), Telegraph (Matt Law), Sky Sports, Daily Mail (Kieran Gill), Standard Sport (Sam Tabuteau), Football London (Bobby Vincent), Guardian, talkSPORT (Ben Jacobs).
 - Statistics: Opta, WhoScored, Sofascore, FotMob, Squawka, premierleague.com. Name the one you used.
 - Check the last 10 channel posts and pick a different source from the ones they name when the story allows it. Never change or invent a source to get variety: name the source you really used.
-
-# Registan LC | Nukus filiali
-
-Before writing anything for @registan_nukus, read `data/registan/guide.md` and follow it. The CHELSEA UZ and Como rules above don't apply to it.
