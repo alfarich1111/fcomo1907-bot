@@ -36,7 +36,7 @@ The owner wants more than ESPN. ESPN is for checking scores, fixtures and the ta
 
 These override the task prompt and data/emoji_guide_chelsea.md where they differ.
 
-- Only fresh news. A news post is about something published in the last 12 hours. Never present an old story as news and never re-tell earlier news. If nothing fresh and new is found after a real search, post nothing and say so in the report: this replaces "Nothing to post is not acceptable".
+- Only fresh news. A news post is about something published in the last 24 hours and not yet in the channel. Never present an old story as news and never re-tell earlier news. If nothing fresh and new is found after a real search, post nothing and say so in the report: this replaces "Nothing to post is not acceptable".
 - History is allowed only as clearly labelled history, at most one post a day, and only for a really memorable moment: a legend, a trophy or final, a historic win, a club record. An ordinary league match is never history (the owner rejected post 4445 about a 1:0 win a year ago).
 - No headline. The post starts straight with the news itself, not with a bold title line or a title ending in a colon. Interviews too: one short sentence saying who said it and when, then the quote. The stickers stay on the first line as before.
 - Don't translate word for word. Say the point in your own short, clear Uzbek: usually 2 or 3 short sentences. For an interview, give only the one or two most interesting quotes, shortened, not the whole press conference.
@@ -49,3 +49,12 @@ These override the task prompt and data/emoji_guide_chelsea.md where they differ
 3. Telegram channels, read with `python recent_web.py 30 <name>`: ChelseaSunSport, CFC_ChelseaFC, Chelsea_fc_worldwide, news_blues, breakevens, beautyCFC, tg_chelsea_news, cfc_london. Apart from CFC_ChelseaFC these are fan channels: use them to find stories, then confirm the story with the club or a journalist from point 2 and name that source, not the fan channel. Don't take their photos if they carry their logo or watermark.
 4. Topics: pre-match (squad, press conference, the coach's words, the opponent); match analysis (result, player ratings, key statistics, records); transfer analysis (fee, contract length, stage of talks, not only who comes or goes); club history (as limited above); the academy (youth results, promotions to the first team, loan players).
 5. The owner's nine rules: never post the same news twice; check every item's date and time; never give old news as new; never present a journalist's guess as official; injuries only from reliable sources; players' names in their original English spelling; natural Uzbek, not word for word; check the facts before every post; important unconfirmed news goes to the admin for approval (Saved Messages), not to the channel.
+
+# Too many runs posted nothing (4 Nov 2026): what counts as postable
+
+The owner asked why posts stopped. Skipping is only right when there is truly nothing. These also count as fresh posts, and override the task prompts of both channels:
+
+- CHELSEA UZ: a report by one tier-1 journalist (Romano, Ornstein, Johnson, Twomey, Jacobs, Crook, Kinsella, Gill, Law, Vincent, Smith, Tabuteau) is enough for a post, written as their report («... ma'lumotiga ko'ra»). Don't wait for a second source for that. Only important unconfirmed news goes to the admin (rule 9).
+- CHELSEA UZ: the club's own posts of the last 24 hours (@ChelseaFC, @CFC_ChelseaFC): training photos, player Instagram posts, club statistics, videos. The owner listed training and club photos as main content. A short post with the photo and one or two sentences is fine.
+- @FComo1907: on a match day and the day before, everything about that match counts as fresh until kickoff, including the press conference of the day before, the convocati, the opponent, the referee, the fans' trip. Fresh otherwise means the last 24 hours, not 12.
+- Both: a missing photo of the person is not a reason to skip. Use the photo of the source article, or a recent team or club photo from this season (club site, the source's article, the club's Telegram channel). Only skip when no fitting photo from this season exists at all.
