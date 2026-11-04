@@ -58,3 +58,7 @@ The owner asked why posts stopped. Skipping is only right when there is truly no
 - CHELSEA UZ: the club's own posts of the last 24 hours (@ChelseaFC, @CFC_ChelseaFC): training photos, player Instagram posts, club statistics, videos. The owner listed training and club photos as main content. A short post with the photo and one or two sentences is fine.
 - @FComo1907: on a match day and the day before, everything about that match counts as fresh until kickoff, including the press conference of the day before, the convocati, the opponent, the referee, the fans' trip. Fresh otherwise means the last 24 hours, not 12.
 - Both: a missing photo of the person is not a reason to skip. Use the photo of the source article, or a recent team or club photo from this season (club site, the source's article, the club's Telegram channel). Only skip when no fitting photo from this season exists at all.
+
+# CHELSEA UZ topic mix (owner, 4 Nov 2026)
+
+"Faqat transfer emas, boshqa mavzularda ham". Vary the topics through the day: at most one transfer post in every three, and never two transfer posts in a row. Before choosing, look at the last 5 channel posts and pick a different topic from the owner's list: club news and training, players' condition and injuries, interviews and press conferences, pre-match, match analysis and ratings, statistics, the academy and loan players, Chelsea Women, a memorable history moment.
