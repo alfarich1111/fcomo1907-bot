@@ -6,9 +6,18 @@ import datetime as dt
 import json
 import sys
 import urllib.request
+from pathlib import Path
 
 TEAM = sys.argv[1] if len(sys.argv) > 1 else "2572"
+# Matches the owner doesn't want commented live: ESPN event ids, one per line ("#" starts a comment).
+SKIP_FILE = Path(__file__).resolve().parent / "data" / "skip_live.txt"
 URL = f"https://site.api.espn.com/apis/site/v2/sports/soccer/all/teams/{TEAM}/schedule?fixture=true"
+
+
+def skipped():
+    if not SKIP_FILE.exists():
+        return set()
+    return {line.split("#")[0].strip() for line in SKIP_FILE.read_text(encoding="utf-8").splitlines()} - {""}
 
 
 def main():
@@ -23,6 +32,9 @@ def main():
         state = ev["competitions"][0]["status"]["type"].get("state")
         minutes = (kickoff - now).total_seconds() / 60
         if state != "post" and -240 <= minutes <= 180:
+            if ev["id"] in skipped():
+                print(f"{ev['name']}: live commentary switched off by the owner", file=sys.stderr)
+                return
             print(f"event={ev['id']}")
             print(f"league={slug}")
             print(f"{ev['name']} at {kickoff:%Y-%m-%d %H:%M}Z ({state})", file=sys.stderr)
