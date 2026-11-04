@@ -39,3 +39,12 @@ The owner doesn't want minor #Kun_tarixi posts (2 Nov 2026, about post 4445: an 
 - News: start with @CFC_ChelseaFC, then chelseafc.com, Fabrizio Romano, David Ornstein and The Athletic (Simon Johnson, Liam Twomey), BBC Sport (Nizaar Kinsella), Telegraph (Matt Law), Sky Sports, Daily Mail (Kieran Gill), Standard Sport (Sam Tabuteau), Football London (Bobby Vincent), Guardian, talkSPORT (Ben Jacobs).
 - Statistics: Opta, WhoScored, Sofascore, FotMob, Squawka, premierleague.com. Name the one you used.
 - Check the last 10 channel posts and pick a different source from the ones they name when the story allows it. Never change or invent a source to get variety: name the source you really used.
+
+# CHELSEA UZ post rules (owner, 4 Nov 2026)
+
+These override the task prompt and data/emoji_guide_chelsea.md where they differ.
+
+- Only fresh news. A post is about something published in the last 12 hours. No old stories, no #Kun_tarixi, no history or "N yil oldin" posts, no re-telling of earlier news. If nothing fresh and new is found after a real search, post nothing and say so in the report: this replaces "Nothing to post is not acceptable".
+- No headline. The post starts straight with the news itself, not with a bold title line or a title ending in a colon. Interviews too: one short sentence saying who said it and when, then the quote. The stickers stay on the first line as before.
+- Don't translate word for word. Say the point in your own short, clear Uzbek: usually 2 or 3 short sentences. For an interview, give only the one or two most interesting quotes, shortened, not the whole press conference.
+- Mainly English sources: the club, English journalists and outlets (The Athletic, BBC, Sky Sports, Telegraph, Daily Mail, Standard, Football London, Guardian, talkSPORT, Fabrizio Romano, Ben Jacobs). Use other sources only when an English one doesn't have the story.
