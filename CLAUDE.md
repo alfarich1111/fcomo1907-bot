@@ -62,3 +62,7 @@ The owner asked why posts stopped. Skipping is only right when there is truly no
 # CHELSEA UZ topic mix (owner, 4 Nov 2026)
 
 "Faqat transfer emas, boshqa mavzularda ham". Vary the topics through the day: at most one transfer post in every three, and never two transfer posts in a row. Before choosing, look at the last 5 channel posts and pick a different topic from the owner's list: club news and training, players' condition and injuries, interviews and press conferences, pre-match, match analysis and ratings, statistics, the academy and loan players, Chelsea Women, a memorable history moment.
+
+# @FComo1907 pause (owner, 5 Nov 2026)
+
+«До 15 МСК ничего не выкладывай, потом начинай работу». Before 2026-11-05 12:00 UTC (15:00 по МСК) post nothing on @FComo1907: end the run at once and report the pause. From 12:00 UTC work normally.
