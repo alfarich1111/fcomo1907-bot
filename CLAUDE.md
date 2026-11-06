@@ -66,3 +66,11 @@ The owner asked why posts stopped. Skipping is only right when there is truly no
 # @FComo1907 pause (owner, 5 Nov 2026)
 
 «До 15 МСК ничего не выкладывай, потом начинай работу». Before 2026-11-05 12:00 UTC (15:00 по МСК) post nothing on @FComo1907: end the run at once and report the pause. From 12:00 UTC work normally.
+
+# @FComo1907: post on every run (owner, 6 Nov 2026)
+
+The owner asked why the Como channel isn't working: since the pause ended, every run posted nothing after a minute of searching. This overrides "posting nothing is fine" in the task: each run publishes ONE post, unless the day's limit is reached or it is the match blackout.
+
+- Search properly, not only WebSearch (it is US-based and returns old pages). Open these pages directly with WebFetch or curl and read today's items with their times: https://www.tuttomercatoweb.com/como/ , https://www.calciomercato.com/squadre/como , https://www.laprovinciadicomo.it/sport/calcio/como-calcio/ , https://www.calciocomo1907.it/ , https://comofootball.com/en/news/ , and https://t.me/s/<name> of Italian or Russian Como channels.
+- Postable when there is no hard news: an Italian journalist's or paper's opinion about a Como player or transfer, written as their view («TMW считает…», «в Италии пишут…»); a player's quote from an interview; a training or club photo of the last 24 hours with one line; a short fan question that invites comments («Кого бы вы поставили вместо Кина?»); a number with a real point. Rumours and opinions are fine when they are attributed and not yet in the channel.
+- Still never repeat a story or angle already in the channel, never write AI filler, keep the admins' short fan style (data/como_style.md).
