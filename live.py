@@ -35,9 +35,9 @@ STANDINGS = "https://site.api.espn.com/apis/v2/sports/soccer/{league}/standings"
 LEAGUE_RU = {"ita.1": "Серия А", "uefa.champions": "Лига чемпионов", "ita.coppa_italia": "Кубок Италии"}
 WEEKDAYS = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
-# Premium emoji from the channel's own posts.
+# Premium emoji from the channel's own posts. No face stickers (the owner's rule): the goal is a plain ⚽️.
 E = {
-    "goal": "5226842334418736150", "out": "5210952531676504517", "in": "5427009714745517609",
+    "goal": "", "out": "5210952531676504517", "in": "5427009714745517609",
     "flash": "5456140674028019486", "live": "5411225014148014586", "eyes": "5424885441100782420",
     "bullet": "5220069935497097998",
 }
@@ -48,6 +48,8 @@ NAMES = {k: v for k, v in json.loads((DATA / "names_ru.json").read_text(encoding
 
 
 def em(key):
+    if not E[key]:
+        return FALLBACK[key]
     return f'<tg-emoji emoji-id="{E[key]}">{FALLBACK[key]}</tg-emoji>'
 
 
