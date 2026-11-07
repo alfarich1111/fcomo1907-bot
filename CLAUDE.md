@@ -80,3 +80,15 @@ The owner asked why the Como channel isn't working: since the pause ended, every
 The owner: «yuz stikerlaridan foydalanma, o'yinchi bo'lsa qaysi millatdan bo'lsa o'sha millat bayrog'ini qo'y». The custom emoji 5226842334418736150 is a player's face, not a ball: never use it, nor any other face or portrait sticker, on @FComo1907. This overrides the sticker list in the task.
 - A post about a player: the plain flag of his country first, e.g. 🇦🇷 Нико Пас, 🇬🇷 Дувикас, 🇭🇷 Батурина, 🇪🇸 Фабрегас. Check the nationality in a source if unsure.
 - A general football line: plain ⚽️ (Unicode, not a custom emoji). The other custom stickers in the task (💼 ✅ ❌ 🏥 💰 📰) and the 🇮🇹 crest signature stay.
+
+# @FComo1907 matchday 8 Nov 2026: use the owner's poster
+
+The owner approved a ready poster for «Интер» — «Комо» (8 Nov 2026, 20:00 МСК). In the match-day run on 8 Nov 2026, do NOT render a poster: copy assets/como/matchday_2026-11-08.png to outbox/$TS.png and publish it with exactly this caption (do everything else the task asks, such as the match metadata file, as usual):
+
+Матчдэй!
+
+«Интер» — «Комо»
+Серия А, 11 тур
+20:00 по МСК, «Сан-Сиро»
+
+<tg-emoji emoji-id="5229073990835804268">🇮🇹</tg-emoji> @FComo1907
