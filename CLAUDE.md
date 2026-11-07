@@ -74,3 +74,9 @@ The owner asked why the Como channel isn't working: since the pause ended, every
 - Search properly, not only WebSearch (it is US-based and returns old pages). Open these pages directly with WebFetch or curl and read today's items with their times: https://www.tuttomercatoweb.com/como/ , https://www.calciomercato.com/squadre/como , https://www.laprovinciadicomo.it/sport/calcio/como-calcio/ , https://www.calciocomo1907.it/ , https://comofootball.com/en/news/ , and https://t.me/s/<name> of Italian or Russian Como channels.
 - Postable when there is no hard news: an Italian journalist's or paper's opinion about a Como player or transfer, written as their view («TMW считает…», «в Италии пишут…»); a player's quote from an interview; a training or club photo of the last 24 hours with one line; a short fan question that invites comments («Кого бы вы поставили вместо Кина?»); a number with a real point. Rumours and opinions are fine when they are attributed and not yet in the channel.
 - Still never repeat a story or angle already in the channel, never write AI filler, keep the admins' short fan style (data/como_style.md).
+
+# @FComo1907 stickers: no faces, flags for players (owner, 7 Nov 2026)
+
+The owner: «yuz stikerlaridan foydalanma, o'yinchi bo'lsa qaysi millatdan bo'lsa o'sha millat bayrog'ini qo'y». The custom emoji 5226842334418736150 is a player's face, not a ball: never use it, nor any other face or portrait sticker, on @FComo1907. This overrides the sticker list in the task.
+- A post about a player: the plain flag of his country first, e.g. 🇦🇷 Нико Пас, 🇬🇷 Дувикас, 🇭🇷 Батурина, 🇪🇸 Фабрегас. Check the nationality in a source if unsure.
+- A general football line: plain ⚽️ (Unicode, not a custom emoji). The other custom stickers in the task (💼 ✅ ❌ 🏥 💰 📰) and the 🇮🇹 crest signature stay.
