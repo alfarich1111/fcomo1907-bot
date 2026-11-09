@@ -92,3 +92,11 @@ The owner approved a ready poster for «Интер» — «Комо» (8 Nov 202
 20:00 по МСК, «Сан-Сиро»
 
 <tg-emoji emoji-id="5229073990835804268">🇮🇹</tg-emoji> @FComo1907
+
+# @FComo1907: transfer news only (owner, 9 Nov 2026)
+
+«Комо uchun faqat transfer yangiliklar qo'y». This overrides every earlier @FComo1907 news rule above, including "post on every run" and the match-day and other topics in the task.
+- The news task posts ONLY transfer news: players Como wants, bids, talks, fees, contracts and renewals, Como players wanted by other clubs, loans, departures. Rumours are fine when attributed («Николо Скира пишет…»).
+- No other topics in the news task: no match previews or reactions, no national teams, no opinions, quotes, history, youth or women's team, fan questions.
+- If there is no fresh transfer story (last 24 hours, not yet in the channel), post nothing.
+- Unchanged: the matchday poster, live commentary and result poster automations; the style, sticker and no-repeat rules.
