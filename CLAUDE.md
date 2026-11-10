@@ -107,3 +107,7 @@ The owner approved a ready poster for «Интер» — «Комо» (8 Nov 202
 - First choice: transfer news of the last 24 hours not yet in the channel.
 - If there is none, use transfer material of the last 7 days that the channel hasn't covered, or a transfer angle the channel hasn't given yet: a Como player's contract situation or release clause, his market value (Transfermarkt), which clubs follow him and why, a Como target's numbers this season, what an Italian journalist or paper writes about Como's January or summer plans, a loan player's progress with an eye on his future.
 - Still transfers only, still no repeats (check `python recent_web.py 100` and grep names), rumours attributed, facts checked, the admins' short style, a flag for the player's nationality, no face stickers.
+
+# @FComo1907: other topics when there is no transfer (owner, 10 Nov 2026)
+
+Answering «Transfer xabari bo'lmagan soatlarda boshqa mavzuda post qo'yilsinmi?» the owner said yes. This replaces "transfers only" above: every 2-hour run posts ONE post. Transfer news comes first; when there is no transfer story the channel hasn't covered, post on another Como topic instead: Como players with their national teams (call-ups, goals, minutes), Fabregas' or players' words, match analysis and ratings, injuries and returns, the youth team (Primavera, U19), loan players, the club and the stadium, Lake Como life. Same rules: no repeats, facts checked, short fan style, a nationality flag for players, no face stickers.
