@@ -126,3 +126,10 @@ The bot posted four posts about Chalobah on @FComo1907 and the owner deleted the
 - data/posted_log.txt lists every post the outbox ever published, deleted or not. Read it too and treat everything in it as already posted.
 - A story whose post an admin deleted (it is in the log but no longer in the channel) was rejected: never post that story or that angle again.
 - @FComo1907: don't post about Trevoh Chalobah at all, unless the club officially announces his transfer.
+
+# @FComo1907: a different source every time (owner, 12 Nov 2026)
+
+The owner: «nimaga faqat TuttoMercatoWeb'ni foydalanyapsan, bitta istochnik ikkinchi marta foydalanmasin». Too many posts came from TuttoMercatoWeb.
+- Look at the source of the channel's last 6 posts (the source line or «X пишет…», and data/posted_log.txt). Your post must come from a source none of them used. TuttoMercatoWeb at most once a day.
+- Rotate through many sources, not only TMW: Gazzetta dello Sport, Corriere dello Sport, Tuttosport, Sky Sport Italia, Calciomercato.com, La Provincia di Como, Corriere di Como, Il Giorno, comofootball.com (club), Football Italia, The Athletic, Sky Sports, The Guardian, AS, Marca, Mundo Deportivo, Olé, Sport-Express, sports.ru, championat.com; journalists Nicolò Schira, Gianluca Di Marzio, Matteo Moretto, Fabrizio Romano, Alfredo Pedullà, Daniele Longo. Players' own Instagram and national-team federations count as sources too.
+- If the only source for a story is one used in the last 6 posts, pick another story. Never name a different source than the one you really used.
