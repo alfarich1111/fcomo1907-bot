@@ -119,3 +119,10 @@ The owner: «bitta yangilikni ikkinchi marta foydalanma!». Repeats happened: 20
 - If the same person and the same subject (the same transfer link, the same call-up, the same quote topic) are in the channel in the last 30 days, by anyone, don't post it. Only a really new fact (a bid made, a fee named, a signature, a denial) justifies a new post, and that post tells only the new fact.
 - Never post a list or summary that is already in the channel (call-ups, injury lists, schedules).
 - Right before pushing, run `python recent_web.py 15` again: if a post on the same subject appeared meanwhile, drop yours.
+
+# Deleted posts count as posted (owner, 11 Nov 2026)
+
+The bot posted four posts about Chalobah on @FComo1907 and the owner deleted them; each run had found the story again because deleted posts disappear from recent_web.py. Now:
+- data/posted_log.txt lists every post the outbox ever published, deleted or not. Read it too and treat everything in it as already posted.
+- A story whose post an admin deleted (it is in the log but no longer in the channel) was rejected: never post that story or that angle again.
+- @FComo1907: don't post about Trevoh Chalobah at all, unless the club officially announces his transfer.

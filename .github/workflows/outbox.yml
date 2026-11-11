@@ -11,6 +11,9 @@ concurrency:
   group: outbox
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -42,3 +45,25 @@ jobs:
         run: |
           pip install -q telethon pillow
           python outbox.py ${{ steps.new.outputs.files }}
+
+      # Remember every published post on main, so later runs see it even if an admin deletes it.
+      - name: Log published posts
+        if: steps.new.outputs.files != ''
+        run: |
+          python - ${{ steps.new.outputs.files }} > /tmp/log_lines.txt <<'EOF'
+          import json, re, sys, datetime
+          now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+          for p in sys.argv[1:]:
+              post = json.load(open(p, encoding="utf-8-sig"))
+              text = re.sub(r"<[^>]+>", "", post.get("caption") or "")
+              text = re.sub(r"\s+", " ", text).strip()[:300]
+              print(f"{now} | {post.get('channel') or 'FComo1907'} | {text}")
+          EOF
+          git config user.name "outbox-bot"
+          git config user.email "outbox-bot@users.noreply.github.com"
+          for i in 1 2 3; do
+            git fetch -q origin main && git checkout -q -B logmain origin/main
+            cat /tmp/log_lines.txt >> data/posted_log.txt
+            git add data/posted_log.txt && git commit -q -m "posted log" && git push -q origin logmain:main && break
+            sleep 5
+          done
