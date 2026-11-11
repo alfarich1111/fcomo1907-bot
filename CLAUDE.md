@@ -111,3 +111,11 @@ The owner approved a ready poster for «Интер» — «Комо» (8 Nov 202
 # @FComo1907: other topics when there is no transfer (owner, 10 Nov 2026)
 
 Answering «Transfer xabari bo'lmagan soatlarda boshqa mavzuda post qo'yilsinmi?» the owner said yes. This replaces "transfers only" above: every 2-hour run posts ONE post. Transfer news comes first; when there is no transfer story the channel hasn't covered, post on another Como topic instead: Como players with their national teams (call-ups, goals, minutes), Fabregas' or players' words, match analysis and ratings, injuries and returns, the youth team (Primavera, U19), loan players, the club and the stadium, Lake Como life. Same rules: no repeats, facts checked, short fan style, a nationality flag for players, no face stickers.
+
+# @FComo1907: no repeated stories, stricter check (owner, 11 Nov 2026)
+
+The owner: «bitta yangilikni ikkinchi marta foydalanma!». Repeats happened: 20822 repeated 20820 (13 players to national teams) and 20831 repeated 20662 (Como follows Camello, already posted on 30 Oct). `recent_web.py 100` reaches only a few days back because live commentary fills the channel, so older stories were missed. This overrides the shorter checks above:
+- Before choosing a story run `python recent_web.py 500 > work/channel.txt` and search it for EVERY name in your story (player, club, coach, journalist) in Russian and Latin spelling, e.g. `grep -i -E "камельо|camello" work/channel.txt`.
+- If the same person and the same subject (the same transfer link, the same call-up, the same quote topic) are in the channel in the last 30 days, by anyone, don't post it. Only a really new fact (a bid made, a fee named, a signature, a denial) justifies a new post, and that post tells only the new fact.
+- Never post a list or summary that is already in the channel (call-ups, injury lists, schedules).
+- Right before pushing, run `python recent_web.py 15` again: if a post on the same subject appeared meanwhile, drop yours.
