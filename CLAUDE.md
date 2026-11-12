@@ -133,3 +133,9 @@ The owner: «nimaga faqat TuttoMercatoWeb'ni foydalanyapsan, bitta istochnik ikk
 - Look at the source of the channel's last 6 posts (the source line or «X пишет…», and data/posted_log.txt). Your post must come from a source none of them used. TuttoMercatoWeb at most once a day.
 - Rotate through many sources, not only TMW: Gazzetta dello Sport, Corriere dello Sport, Tuttosport, Sky Sport Italia, Calciomercato.com, La Provincia di Como, Corriere di Como, Il Giorno, comofootball.com (club), Football Italia, The Athletic, Sky Sports, The Guardian, AS, Marca, Mundo Deportivo, Olé, Sport-Express, sports.ru, championat.com; journalists Nicolò Schira, Gianluca Di Marzio, Matteo Moretto, Fabrizio Romano, Alfredo Pedullà, Daniele Longo. Players' own Instagram and national-team federations count as sources too.
 - If the only source for a story is one used in the last 6 posts, pick another story. Never name a different source than the one you really used.
+
+# No women's team posts, youth team instead (owner, 12 Nov 2026, both channels)
+
+The owner: «ayollar jamoasi haqida post umuman kerak emas, bu Chelsea'ga ham, Como'ga ham tegishli; ayollar jamoasi o'rniga yoshlar jamoasi haqida qo'y». This overrides every earlier rule that allowed women's team posts (Chelsea Women, Como Women), on CHELSEA UZ and @FComo1907:
+- Never post about the women's team, its players, results, coach or interviews.
+- Use the youth team instead: Chelsea U21, U18, Academy, players promoted to the first team, loanees; Como Primavera, U19 (Youth League), U17, academy players moving up.
