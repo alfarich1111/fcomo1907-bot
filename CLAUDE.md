@@ -139,3 +139,12 @@ The owner: «nimaga faqat TuttoMercatoWeb'ni foydalanyapsan, bitta istochnik ikk
 The owner: «ayollar jamoasi haqida post umuman kerak emas, bu Chelsea'ga ham, Como'ga ham tegishli; ayollar jamoasi o'rniga yoshlar jamoasi haqida qo'y». This overrides every earlier rule that allowed women's team posts (Chelsea Women, Como Women), on CHELSEA UZ and @FComo1907:
 - Never post about the women's team, its players, results, coach or interviews.
 - Use the youth team instead: Chelsea U21, U18, Academy, players promoted to the first team, loanees; Como Primavera, U19 (Youth League), U17, academy players moving up.
+
+# Statistics posts with a stats card image (owner, 12 Nov 2026, both channels)
+
+The owner sent a CHELSEA UZ post (Palmer's share of Chelsea's chances, a ranked list with bars under a photo) and said: «Como'ga ham Chelsea'ga ham orada mana shunaqa rasmlar bilan statistikalar tashlab tur».
+- About once or twice a day per channel (not every run), make a statistics post whose picture is a stats card: `bash cloud_setup.sh --posters`, write a spec and run `python statcard.py work/stat.json outbox/$TS.png` (see the spec format at the top of statcard.py; "channel": "chelsea" or "como"). LOOK at the result before posting.
+- Real numbers only, from a named statistics source you actually read: Opta / Opta Analyst, Squawka, WhoScored, Sofascore, FotMob, FBref, premierleague.com, Lega Serie A. Put the source and the season in "source". Never ESPN for Chelsea. Never invent or estimate a number; if you can't get a full top-5 list from one source, choose another stat.
+- Card text in the channel's language: Uzbek Latin for CHELSEA UZ, Russian for @FComo1907. Players' names as each channel writes them. Mark our club's player with "highlight": true. Club logos: https://a.espncdn.com/i/teamlogos/soccer/500/<espn team id>.png (Chelsea 363, Como 2572; other ids from the ESPN standings API).
+- Photo on top: a recent, sharp photo of the player the stat is about (the photo rules above apply).
+- Caption: short, in the channel's style, says what the stat means; the source line as usual.
