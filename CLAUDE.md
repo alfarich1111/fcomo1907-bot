@@ -148,3 +148,10 @@ The owner sent a CHELSEA UZ post (Palmer's share of Chelsea's chances, a ranked 
 - Card text in the channel's language: Uzbek Latin for CHELSEA UZ, Russian for @FComo1907. Players' names as each channel writes them. Mark our club's player with "highlight": true. Club logos: https://a.espncdn.com/i/teamlogos/soccer/500/<espn team id>.png (Chelsea 363, Como 2572; other ids from the ESPN standings API).
 - Photo on top: a recent, sharp photo of the player the stat is about (the photo rules above apply).
 - Caption: short, in the channel's style, says what the stat means; the source line as usual.
+
+# @FComo1907: only the news, no commentary (owner, 17 Nov 2026)
+
+The owner showed the line «Пока это слухи, но очередь за нашим парнем растёт 😏» and said: «не нужно такие вещи, просто новость и всё». This overrides data/como_style.md and earlier rules that welcomed reactions, jokes or opinions:
+- Write only the news itself: who, what, the facts, the quote, and the source. Nothing added.
+- No own comments or conclusions, no jokes, no winks (😏 😂 🤔 and the like), no rhetorical lines («Сеск, забираем?», «Ну что, ждём голов?»), no questions to readers, no summing-up last line.
+- Still short, natural Russian, the flag or a calm sticker on the first line, the source line and the signature.
