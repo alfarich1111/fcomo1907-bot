@@ -155,3 +155,9 @@ The owner showed the line «Пока это слухи, но очередь за
 - Write only the news itself: who, what, the facts, the quote, and the source. Nothing added.
 - No own comments or conclusions, no jokes, no winks (😏 😂 🤔 and the like), no rhetorical lines («Сеск, забираем?», «Ну что, ждём голов?»), no questions to readers, no summing-up last line.
 - Still short, natural Russian, the flag or a calm sticker on the first line, the source line and the signature.
+
+# @FComo1907: bold headline, source only once (owner, 18 Nov 2026)
+
+The owner: «1. Жирным выделяй заголовок. 2. Если в посте упомянул источник, его снизу указывать не надо». This overrides earlier format rules for @FComo1907:
+- The first line of every news post is a short headline in bold: <b>…</b> (after the flag or sticker). Sentence case, never ALL CAPS.
+- If the text already names the source («TuttoMercatoWeb пишет…», «по словам Луди…», «Скира сообщает…»), don't add a 📰 source line at the bottom. Add the bottom source line only when the text doesn't name it.
