@@ -161,3 +161,18 @@ The owner showed the line «Пока это слухи, но очередь за
 The owner: «1. Жирным выделяй заголовок. 2. Если в посте упомянул источник, его снизу указывать не надо». This overrides earlier format rules for @FComo1907:
 - The first line of every news post is a short headline in bold: <b>…</b> (after the flag or sticker). Sentence case, never ALL CAPS.
 - If the text already names the source («TuttoMercatoWeb пишет…», «по словам Луди…», «Скира сообщает…»), don't add a 📰 source line at the bottom. Add the bottom source line only when the text doesn't name it.
+
+# @FComo1907 matchday and next-match posters: the CHELSEA UZ photo style (owner, 21 Nov 2026)
+
+The owner showed the CHELSEA UZ matchday poster and said: «Como kanali uchun ham shunaqa poster qilasan bundan buyog'iga». This replaces the player-cutout poster (steps 3 and 4 of the match-day task) and the old caption:
+- Poster: a full-bleed recent photo of a Como player or the team in the current kit (no cutouts), with both crests top-right, the big kickoff time, «по московскому времени», the label and the round. Write work/match.json and run `python poster.py matchday work/match.json work/matchday.png`:
+  {"theme": "comophoto", "lang": "ru", "time": "17:00", "tz": "по московскому времени", "label": "День матча", "kicker": "Серия А · 12 тур", "league": "ita.1", "home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/<home id>.png", "away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/<away id>.png", "photo": "<recent photo url or path>"}
+  For a next-match poster use "label": "Следующий матч". The photo must be new and sharp, with free space top-right; LOOK at the poster before posting.
+- Caption, exactly this shape (bold headline, no ⚡️, no ALL CAPS):
+  <b>Матчдэй</b>
+
+  «Хозяева» — «Гости»
+  Серия А, 12 тур
+  17:00 по МСК, «Стадион»
+
+  <tg-emoji emoji-id="5229073990835804268">🇮🇹</tg-emoji> @FComo1907
