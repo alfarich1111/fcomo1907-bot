@@ -146,7 +146,7 @@ class Match:
     def footer(self, score=None):
         # Running score from the goals posted so far, so replays and lagging feeds stay consistent.
         h, a = score or self.state.get("score") or self.score
-        return f"@FComo1907 | {self.logo(self.home, True)}{h}:{a}{self.logo(self.away, False)}"
+        return f"@FComo1907 | {self.logo(self.home, True)} {h}:{a} {self.logo(self.away, False)}"
 
     def score_from_text(self, text):
         hn, an = re.escape(self.home["team"]["displayName"]), re.escape(self.away["team"]["displayName"])
