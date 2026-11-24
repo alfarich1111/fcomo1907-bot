@@ -176,3 +176,9 @@ The owner showed the CHELSEA UZ matchday poster and said: «Como kanali uchun ha
   17:00 по МСК, «Стадион»
 
   <tg-emoji emoji-id="5229073990835804268">🇮🇹</tg-emoji> @FComo1907
+
+# @FComo1907: avoid TuttoMercatoWeb as the named source, premium stickers (owner, 24 Nov 2026)
+
+The owner: «измени источник и попробуй использовать премиум стикеры, если даже это TuttoMercato, пожалуйста измени в посте на другой».
+- Don't name TuttoMercatoWeb (TMW) in posts. When a story comes from TMW, find the same story in another outlet (Calciomercato.com, Gazzetta, Corriere dello Sport, Tuttosport, Sky Sport, Calciocomo.it, Tutto Calcio Como, La Provincia di Como, the journalist's own X post, Football Italia, sports.ru…) and build the post from that outlet, naming it. Never name an outlet that doesn't really have the story: if no other outlet has it, choose another story.
+- Use premium (custom) emoji, not plain ones. Premium flags (Animated Emoji pack): 🇮🇹 5449723275628259037, 🇦🇷 5262873863036872166, 🇭🇷 5262677003210860950, 🇫🇷 5202132623060640759, 🇬🇷 5381889099026149370, 🇪🇸 5201957744877248121, 🇨🇩 5269407491841603689, 🇵🇪 5409100220812239915, 🇧🇴 5357272214796255046, 🇸🇪 5384542551296455687, 🇹🇷 5426933049579324046. Write them as <tg-emoji emoji-id="ID">🇮🇹</tg-emoji>. Other premium stickers: the list in the task (💼 ✅ ❌ 🏥 💰 📰) and the 🇮🇹 crest signature. No face stickers.
