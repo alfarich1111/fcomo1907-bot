@@ -137,10 +137,11 @@ class Match:
     def logo(self, side, left):
         t = side["team"]
         info = team_ru(t["id"], t.get("displayName", ""))
+        # The owner: only logos in the score line, never the club's name.
         if info.get("emoji"):
-            fb = "🇮🇹" if str(t["id"]) == COMO_ID else "⚽️"
+            fb = "🇮🇹" if str(t["id"]) == COMO_ID else info.get("fallback", "⚽️")
             return f'<tg-emoji emoji-id="{info["emoji"]}">{fb}</tg-emoji>'
-        return f'«{info["name"]}» ' if left else f' «{info["name"]}»'
+        return info.get("fallback", "⚽️")
 
     def footer(self, score=None):
         # Running score from the goals posted so far, so replays and lagging feeds stay consistent.

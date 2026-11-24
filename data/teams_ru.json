@@ -1,5 +1,6 @@
 {
   "_comment": "ESPN team id -> Russian forms. name = как в заголовке, with = 'с кем' (после 3:1 с ...), vs = 'над кем/против кого' (победа над ...), emoji = premium logo emoji id (optional), color = poster accent.",
+  "887":   {"name": "АЕК",        "with": "АЕК",         "vs": "АЕК",           "emoji": "5229133184075084028", "fallback": "🇬🇷", "color": "#f2c200"},
   "2572":  {"name": "Комо",       "with": "Комо",        "vs": "«Комо»",        "emoji": "5229073990835804268", "color": "#6fb3ff"},
   "239":   {"name": "Торино",     "with": "Торино",      "vs": "«Торино»",      "color": "#8b1e2d"},
   "17530": {"name": "Венеция",    "with": "Венецией",    "vs": "«Венецией»",    "color": "#f07b1d"},
