@@ -186,3 +186,13 @@ The owner: «измени источник и попробуй использо�
 # @FComo1907: a premium sticker on every paragraph (owner, 24 Nov 2026)
 
 The owner asked to add premium stickers to the paragraphs too («на абзацы тоже добавь»). This overrides "body paragraphs have none": every paragraph starts with one premium (custom) emoji that fits it, e.g. 💼 5359785904535774578 transfer or report, 👀 5424885441100782420 interest or rumour, ✅ 5427009714745517609 official, ❌ 5210952531676504517 no or missing, 🏥 5264827875588077689 injury, 💰 5375296873982604963 fee or money, 📰 5433982607035474385 source, a premium flag for a country or player. Never a face sticker, never plain emoji where a premium one exists.
+
+# @FComo1907: vary how the source is shown (owner, 28 Nov 2026)
+
+The owner: «“(источник) пишет / докладывает” уже приелось. Лучше либо не указывать источник (он не всегда нужен), либо ротировать: источник сверху, источник снизу».
+- Don't open the text with «X пишет / сообщает / докладывает / передаёт». At most one post in five may use that formula.
+- No source at all when it isn't needed: official club news, a match fact, a call-up, a player's or coach's public words, anything already confirmed.
+- Rumours and reports still need their source, shown in one of these ways, rotating between posts:
+  - on top, right under the headline: «<tg-emoji emoji-id="5433982607035474385">📰</tg-emoji> Sky Sport» on its own line, then the news as plain facts;
+  - at the bottom, as the last line before the signature: «<tg-emoji emoji-id="5433982607035474385">📰</tg-emoji> Sky Sport».
+- Look at the channel's last 3 posts and use a different placement from the previous one.
